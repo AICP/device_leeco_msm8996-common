@@ -784,6 +784,7 @@ service rmt_storage /system/bin/rmt_storage
     class core
     user root
     group system
+    group root wakelock
     writepid /dev/cpuset/system-background/tasks
 
 service tftp_server /system/bin/tftp_server
