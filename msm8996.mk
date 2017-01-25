@@ -121,8 +121,12 @@ PRODUCT_COPY_FILES += \
 # Camera
 PRODUCT_PACKAGES += \
     Snap \
-    libcamera_shim \
     libstlport
+
+# Shims
+PRODUCT_PACKAGES += \
+    libcamera_shim \
+    qcamera-daemon_shim
 
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
@@ -237,10 +241,6 @@ PRODUCT_PACKAGES += \
     rmnetcli \
     libxml2 \
     libprotobuf-cpp-full
-
-# stlport required for Camera blobs
-PRODUCT_PACKAGES += \
-    libstlport
 
 # Sensors
 PRODUCT_PACKAGES += \
