@@ -213,3 +213,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Fastcharge
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.le_fast_chrg_enable=1
+
+# WIFI CALLING
+persist.data.iwlan.enable=true
