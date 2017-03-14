@@ -8,6 +8,10 @@ on init
     write /sys/devices/system/cpu/cpu2/online 1
     write /sys/devices/system/cpu/cpu3/online 1
 
+    # Set permissions by node reads by dumpstate
+    chmod 0644 /sys/devices/system/cpu/present
+    chmod 0644 /sys/devices/system/cpu/online
+    
     # Update foreground and background cpusets
     write /dev/cpuset/foreground/cpus 0-3
     write /dev/cpuset/foreground/boost/cpus 0-3
@@ -210,7 +214,6 @@ on property:dev.bootcomplete=1
 
 # Kernel tuning
     write /proc/sys/net/ipv4/tcp_congestion_control "westwood"
-
     write /sys/module/msm_thermal/core_control/enabled 0
     write /sys/module/msm_thermal/parameters/enabled Y
 
@@ -224,3 +227,8 @@ on property:dev.bootcomplete=1
     swapon /dev/block/zram0 > /dev/null 2>&1
     swapoff /dev/block/zram0 > /dev/null 2>&1
     write /sys/block/zram0/reset 1
+
+    # Set permissions for dumpstate nodes
+    chmod 0644 /d/rpm_stats
+    chmod 0644 /d/dpm_master_stats
+
