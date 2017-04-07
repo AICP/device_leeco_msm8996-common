@@ -29,6 +29,7 @@ on enable-low-power
 
     # Enable Adaptive LMK
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
+    write /sys/module/lowmemorykiller/parameters/adj "0,200,300,700,900,906"
     write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 81250
 
     # Configure governor settings for little cluster
@@ -185,3 +186,7 @@ on property:dev.bootcomplete=1
 
     write /proc/sys/net/unix/max_dgram_qlen 600
 
+# LMK
+    chmod 666 /sys/module/lowmemorykiller/parameters/minfree
+    chown root /sys/module/lowmemorykiller/parameters/minfree
+    write /sys/module/lowmemorykiller/parameters/minfree 29028,38704,48380,106436,145140,154816
