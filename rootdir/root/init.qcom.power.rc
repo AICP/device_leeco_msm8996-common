@@ -18,6 +18,7 @@ on enable-low-power
 
     # Enable Adaptive LMK
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
+    write /sys/module/lowmemorykiller/parameters/adj "0,200,300,700,900,906"
     write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 81250
 
     # Configure governor settings for little cluster
@@ -105,15 +106,6 @@ on enable-low-power
     # Starting io prefetcher service
     start iop
 
-    # Kernel tuning
-    write /proc/sys/vm/dirty_background_ratio 85
-    write /proc/sys/vm/dirty_expire_centisecs 10
-    write /proc/sys/vm/dirty_ratio 95
-    write /proc/sys/vm/swappiness 0
-    write /proc/sys/vm/vfs_cache_pressure 5
-    write /proc/sys/vm/dirty_writeback_centisecs 900
-    write /sys/block/sda/queue/read_ahead_kb 2048
-
 on charger
     write /sys/devices/system/cpu/cpu1/online 0
     write /sys/devices/system/cpu/cpu2/online 0
@@ -128,5 +120,35 @@ on class_start:late_start
 on property:init.svc.recovery=running
     trigger enable-low-power
 
-on property:dev.bootcomplete=1
-    setprop sys.io.scheduler "bfq"
+on property:sys.boot_completed=1
+# Kernel tuning
+    chown root system /sys/devices/system/cpu/cpu0/online
+    chown root system /sys/devices/system/cpu/cpu1/online
+    chown root system /sys/devices/system/cpu/cpu2/online
+    chown root system /sys/devices/system/cpu/cpu3/online
+    chmod 0664 /sys/devices/system/cpu/cpu0/online
+    chmod 0664 /sys/devices/system/cpu/cpu1/online
+    chmod 0664 /sys/devices/system/cpu/cpu2/online
+    chmod 0664 /sys/devices/system/cpu/cpu3/online
+    write /sys/devices/system/cpu/cpu0/online 1
+    write /sys/devices/system/cpu/cpu1/online 1
+    write /sys/devices/system/cpu/cpu2/online 1
+    write /sys/devices/system/cpu/cpu3/online 1
+
+# VM
+    write /proc/sys/vm/dirty_background_ratio 85
+    write /proc/sys/vm/dirty_expire_centisecs 10
+    write /proc/sys/vm/dirty_ratio 95
+    write /proc/sys/vm/swappiness 0
+    write /proc/sys/vm/vfs_cache_pressure 5
+    write /proc/sys/vm/dirty_writeback_centisecs 900
+
+# IO scheduler
+    write /sys/block/sda/queue/scheduler "deadline"
+    write /sys/block/sda/queue/read_ahead_kb 2048
+
+# LMK
+   chmod 666 \/sys\/module\/lowmemorykiller\/parameters\/minfree
+   chown root \/sys\/module\/lowmemorykiller\/parameters\/minfree
+   echo '29028,38704,48380,106436,145140,154816' > \/sys\/module\/lowmemorykiller\/parameters\/minfree
+
