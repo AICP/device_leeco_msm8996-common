@@ -63,8 +63,8 @@ on enable-low-power
     write /sys/devices/soc/soc:qcom,bcl/mode "enable"
 
     # Input boost configuration
-    write /sys/module/cpu_boost/parameters/input_boost_freq "0:1324800 2:1324800"
-    write /sys/module/cpu_boost/parameters/input_boost_ms 40
+    write /sys/module/cpu_boost/parameters/input_boost_freq "0:307200 2:307200"
+    write /sys/module/cpu_boost/parameters/input_boost_ms 0
 
     # Setting b.L scheduler parameters
     write /proc/sys/kernel/sched_boost 0
@@ -105,15 +105,6 @@ on enable-low-power
     # Starting io prefetcher service
     start iop
 
-    # Kernel tuning
-    write /proc/sys/vm/dirty_background_ratio 85
-    write /proc/sys/vm/dirty_expire_centisecs 10
-    write /proc/sys/vm/dirty_ratio 95
-    write /proc/sys/vm/swappiness 0
-    write /proc/sys/vm/vfs_cache_pressure 5
-    write /proc/sys/vm/dirty_writeback_centisecs 900
-    write /sys/block/sda/queue/read_ahead_kb 2048
-
 on charger
     write /sys/devices/system/cpu/cpu1/online 0
     write /sys/devices/system/cpu/cpu2/online 0
@@ -128,5 +119,29 @@ on class_start:late_start
 on property:init.svc.recovery=running
     trigger enable-low-power
 
-on property:dev.bootcomplete=1
-    setprop sys.io.scheduler "bfq"
+on property:sys.boot_completed=1
+# Kernel tuning
+    chown root system /sys/devices/system/cpu/cpu0/online
+    chown root system /sys/devices/system/cpu/cpu1/online
+    chown root system /sys/devices/system/cpu/cpu2/online
+    chown root system /sys/devices/system/cpu/cpu3/online
+    chmod 0664 /sys/devices/system/cpu/cpu0/online
+    chmod 0664 /sys/devices/system/cpu/cpu1/online
+    chmod 0664 /sys/devices/system/cpu/cpu2/online
+    chmod 0664 /sys/devices/system/cpu/cpu3/online
+    write /sys/devices/system/cpu/cpu0/online 1
+    write /sys/devices/system/cpu/cpu1/online 1
+    write /sys/devices/system/cpu/cpu2/online 1
+    write /sys/devices/system/cpu/cpu3/online 1
+
+# VM
+    write /proc/sys/vm/dirty_background_ratio 85
+    write /proc/sys/vm/dirty_expire_centisecs 10
+    write /proc/sys/vm/dirty_ratio 95
+    write /proc/sys/vm/swappiness 5
+    write /proc/sys/vm/vfs_cache_pressure 5
+    write /proc/sys/vm/dirty_writeback_centisecs 900
+
+# IO scheduler
+    write /sys/block/sda/queue/scheduler "deadline"
+    write /sys/block/sda/queue/read_ahead_kb 2048
