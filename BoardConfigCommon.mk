@@ -149,6 +149,7 @@ HAVE_ADRENO_SOURCE := false
 OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 MAX_VIRTUAL_DISPLAY_DIMENSION := 4096
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
 # Enable dexpreopt to speed boot time
 #ifeq ($(HOST_OS),linux)
