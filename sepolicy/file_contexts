@@ -1,4 +1,5 @@
 /system/bin/mbn_daemon                                          u:object_r:mbn_daemon_exec:s0
+/sys/kernel/debug/msm_subsys/modem(/.*)?                        u:object_r:debugfs_modem:s0
 
 # Init
 /system/bin/init\.power\.sh                                         u:object_r:init_power_exec:s0
