@@ -156,8 +156,8 @@ PRODUCT_PACKAGES += \
     fingerprint.msm8996
 
 # Gello
-PRODUCT_PACKAGES += \
-    Gello
+#PRODUCT_PACKAGES += \
+#    Gello
 
 # GPS
 PRODUCT_PACKAGES += \
