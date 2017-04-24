@@ -181,7 +181,8 @@ void vendor_load_properties() {
     // Common properties
     property_set("persist.radio.ignore_dom_time", "5");
     // Enable WiFiCalling
-    property_set("persist.data.iwlan.enable", "true");
+    property_set("persist.data.iwlan.enable", "false");
+
     // Enable VoLTE
     property_set("persist.radio.cs_srv_type", "0");
     property_set("persist.radio.calls.on.ims", "true");
