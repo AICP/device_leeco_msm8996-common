@@ -176,13 +176,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.sar_mode=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.radio.cs_srv_type=0 \
-    persist.radio.calls.on.ims=0 \
-    persist.radio.jbims=0 \
     persist.radio.csvt.enabled=false \
     persist.radio.rat_on=combine \
     persist.radio.mt_sms_ack=20 \
-    persist.radio.ignore_dom_time=5 \
     persist.radio.force_on_dc=true \
     persist.radio.flexmap_type=none \
     persist.radio.facnotsup_as_nonw=1
