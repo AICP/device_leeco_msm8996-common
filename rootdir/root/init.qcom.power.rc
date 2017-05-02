@@ -221,22 +221,10 @@ on property:dev.bootcomplete=1
 # VM
     write /proc/sys/vm/dirty_background_ratio 85
     write /proc/sys/vm/dirty_expire_centisecs 10
-    write /proc/sys/vm/dirty_ratio 95
     write /proc/sys/vm/swappiness 5
     write /proc/sys/vm/vfs_cache_pressure 5
-    write /proc/sys/vm/dirty_writeback_centisecs 900
 
-# IO scheduler
-    write /sys/block/sda/queue/scheduler "deadline"
-    write /sys/block/sda/queue/read_ahead_kb 2048
-
-# block wakeup sources
-    write /sys/module/wakeup/parameters/enable_qcom_rx_wakelock_ws 0
-    write /sys/module/wakeup/parameters/enable_wlan_extscan_wl_ws 0
-    write /sys/module/wakeup/parameters/enable_ipa_ws 0
+# block wakeup source
     write /sys/module/wakeup/parameters/enable_wlan_wow_wl_ws 0
-    write /sys/module/wakeup/parameters/enable_wlan_ws 0
-    write /sys/module/wakeup/parameters/enable_timerfd_ws 0
-    write /sys/module/wakeup/parameters/enable_netlink_ws 0
     write /sys/module/wakeup/parameters/enable_netmgr_wl_ws 0
 
