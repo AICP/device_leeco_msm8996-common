@@ -214,5 +214,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.le_fast_chrg_enable=1
 
+# Volte
+PRODUCT_PROPERTY_OVERRIDES += \
+persist.dbg.volte_avail_ovr=1 \
+persist.dbg.vt_avail_ovr=1
+
 # WIFI CALLING
-persist.data.iwlan.enable=true
+PRODUCT_PROPERTY_OVERRIDES += \
+persist.data.iwlan.enable=true \
+persist.dbg.wfc_avail_ovr=1
