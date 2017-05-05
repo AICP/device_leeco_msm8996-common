@@ -223,8 +223,3 @@ on property:dev.bootcomplete=1
     write /proc/sys/vm/dirty_expire_centisecs 10
     write /proc/sys/vm/swappiness 5
     write /proc/sys/vm/vfs_cache_pressure 5
-
-# block wakeup source
-    write /sys/module/wakeup/parameters/enable_wlan_wow_wl_ws 0
-    write /sys/module/wakeup/parameters/enable_netmgr_wl_ws 0
-
