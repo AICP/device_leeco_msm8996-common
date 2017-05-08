@@ -1,2 +1,6 @@
 r_dir_file(netd, firmware_file)
 allow netd vfat:file r_file_perms;
+
+allow netd remotecontrol_app:fd use;
+allow netd remotecontrol_app:tcp_socket { read write };
+allow netd remotecontrol_app:tcp_socket getopt;
