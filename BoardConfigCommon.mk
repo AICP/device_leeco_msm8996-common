@@ -184,6 +184,8 @@ USE_SENSOR_MULTI_HAL := true
 # Timeservice
 BOARD_USES_QC_TIME_SERVICES := true
 
+PRODUCT_BOOT_JARS += com.qti.dpmframework dpmapi com.qti.location.sdk
+
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
 BOARD_HAS_QCOM_WLAN_SDK := true
