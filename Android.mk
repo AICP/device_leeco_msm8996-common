@@ -51,9 +51,18 @@ $(LOCAL_BUILT_MODULE):
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
+IR_LIBS := libbvfixed.so libyzs_usc.so
+IR_SYMLINKS := $(addprefix $(TARGET_OUT)/app/LetvRemoteControl_preinstall/lib/arm/,$(notdir $(IR_LIBS)))
+$(IR_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "IR lib link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /system/lib/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(IR_SYMLINKS)
 
 IMS_LIBS := libimscamera_jni.so libimsmedia_jni.so
-IMS_SYMLINKS := $(addprefix $(TARGET_OUT)/app/ims/lib/arm64/,$(notdir $(IMS_LIBS)))
+IMS_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR_APPS)/ims/lib/arm64/,$(notdir $(IMS_LIBS)))
 $(IMS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "IMS lib link: $@"
 	@mkdir -p $(dir $@)

@@ -34,7 +34,7 @@
      NOTE ! - Enable for devices that have a fast response proximity sensor (ideally < 300ms)-->
     <bool name="config_proximityCheckOnWake">true</bool>
     <integer name="config_proximityCheckTimeout">100</integer>
-    <bool name="config_proximityCheckOnWakeEnabledByDefault">false</bool>
+    <bool name="config_proximityCheckOnWakeEnabledByDefault">true</bool>
 
     <!-- Is the notification LED brightness adjustable ? Used to decide if the user can set LED brightness -->
     <bool name="config_adjustableNotificationLedBrightness">true</bool>

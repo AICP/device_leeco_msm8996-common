@@ -8,6 +8,7 @@ vendor/lib/libfastcvadsp_stub.so
 vendor/lib/libfastcvopt.so
 vendor/lib64/libadsp_default_listener.so
 vendor/lib64/libadsprpc.so
+vendor/lib64/libfastcvadsp_stub.so
 
 # ADSP modules
 vendor/lib/rfsa/adsp/libadsp_hvx_add_constant.so
@@ -260,9 +261,6 @@ vendor/lib/libOmxQcelp13Dec.so
 vendor/lib/libOmxVideoDSMode.so
 vendor/lib/libvpphvx.so
 vendor/lib/libvqzip.so
-vendor/lib64/libOmxAacDec.so
-vendor/lib64/libOmxEvrcDec.so
-vendor/lib64/libOmxQcelp13Dec.so
 
 # Network
 -priv-app/QtiTetherService/QtiTetherService.apk
@@ -332,7 +330,7 @@ vendor/lib64/libquipc_os_api.so
 vendor/lib64/libsmemlog.so
 
 # Radio
--app/datastatusnotification/datastatusnotification.apk|644da08bf5d30df915768c32b174810ca0544d69
+-app/datastatusnotification/datastatusnotification.apk
 -app/embms/embms.apk
 -app/fastdormancy/fastdormancy.apk
 -app/QtiTelephonyService/QtiTelephonyService.apk
@@ -353,7 +351,7 @@ etc/permissions/telephonyservice.xml
 framework/embmslibrary.jar
 -framework/qcnvitems.jar
 -framework/qcrilhook.jar
-framework/qti-telephony-common.jar|97d23b52db3773005e51eac7b9df1701c99a416c
+framework/qti-telephony-common.jar
 framework/QtiTelephonyServicelibrary.jar
 lib64/libparam.so
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
@@ -376,8 +374,13 @@ bin/ims_rtp_daemon
 bin/imscmservice
 bin/imsdatadaemon
 bin/imsqmidaemon
+etc/permissions/imscm.xml
+etc/permissions/qti-vzw-ims-internal.xml
+framework/imscmlibrary.jar
+framework/rcsimssettings.jar
 -vendor/app/ims/ims.apk
 -vendor/app/imssettings/imssettings.apk
+vendor/framework/qti-vzw-ims-internal.jar
 vendor/lib64/lib-dplmedia.so
 vendor/lib64/lib-ims-rcscmjni.so
 vendor/lib64/lib-imscamera.so

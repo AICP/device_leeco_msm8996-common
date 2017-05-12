@@ -17,11 +17,8 @@
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
-# System properties
--include $(LOCAL_PATH)/system_prop.mk
-
-$(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
-$(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
+$(call inherit-product, frameworks/native/build/phone-xxhdpi-3072-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/phone-xxhdpi-3072-hwui-memory.mk)
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
@@ -51,7 +48,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.relative_humidity.xml:system/etc/permissions/android.hardware.sensor.relative_humidity.xml \
     frameworks/native/data/etc/android.hardware.sensor.stepcounter.xml:system/etc/permissions/android.hardware.sensor.stepcounter.xml \
     frameworks/native/data/etc/android.hardware.sensor.stepdetector.xml:system/etc/permissions/android.hardware.sensor.stepdetector.xml \
-    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
@@ -63,10 +59,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:system/etc/permissions/android.hardware.vulkan.level.xml \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:system/etc/permissions/android.hardware.vulkan.version.xml
-
-# Ramdisk
-PRODUCT_PACKAGES += \
-    init.power.sh
 
 # Audio
 PRODUCT_COPY_FILES += \
@@ -83,7 +75,33 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/atmel_ts_key.kl:system/usr/keylayout/atmel_ts_key.kl \
     $(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
-    $(LOCAL_PATH)/keylayout/qpnp_pon.kl:system/usr/keylayout/qpnp_pon.kl
+    $(LOCAL_PATH)/keylayout/qpnp_pon.kl:system/usr/keylayout/qpnp_pon.kl \
+    $(LOCAL_PATH)/keylayout/Generic.kl:system/usr/keylayout/Generic.kl
+
+# Device was launched with M
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.product.first_api_level=23
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.heapstartsize=16m \
+    dalvik.vm.heapgrowthlimit=256m \
+    dalvik.vm.heapsize=512m \
+    dalvik.vm.heaptargetutilization=0.75 \
+    dalvik.vm.heapminfree=4m \
+    dalvik.vm.heapmaxfree=8m
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hwui.texture_cache_size=96 \
+    ro.hwui.layer_cache_size=64 \
+    ro.hwui.r_buffer_cache_size=12 \
+    ro.hwui.path_cache_size=39 \
+    ro.hwui.gradient_cache_size=1 \
+    ro.hwui.drop_shadow_cache_size=7 \
+    ro.hwui.texture_cache_flushrate=0.4 \
+    ro.hwui.text_small_cache_width=2048 \
+    ro.hwui.text_small_cache_height=2048 \
+    ro.hwui.text_large_cache_width=3072 \
+    ro.hwui.text_large_cache_height=2048
 
 # Haters gonna hate..
 PRODUCT_CHARACTERISTICS := nosdcard
@@ -126,13 +144,23 @@ PRODUCT_PACKAGES += \
 # Shims
 PRODUCT_PACKAGES += \
     libcamera_shim \
-    qcamera-daemon_shim
+    libshims_camera \
+    libshims_ims
+
+# Yep
+PRODUCT_PACKAGES += \
+    libminui \
+    liblog
 
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
     cneapiclient \
     com.quicinc.cne \
     services-ext
+
+# Bluetooth
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/iot_devlist.conf:system/etc/bluetooth/iot_devlist.conf
 
 # Display
 PRODUCT_PACKAGES += \
@@ -143,16 +171,13 @@ PRODUCT_PACKAGES += \
     liboverlay \
     libtinyxml
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/FOSSConfig.xml:system/etc/FOSSConfig.xml
-
 # Display calibration
 PRODUCT_PACKAGES += \
     libjni_livedisplay
 
 # Doze mode
 PRODUCT_PACKAGES += \
-    Doze
+    LetvDoze
 
 # For android_filesystem_config.h
 PRODUCT_PACKAGES += \
@@ -160,19 +185,11 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint sensor
 PRODUCT_PACKAGES += \
-    fingerprintd \
-    fingerprint.msm8996
-
-# Gello
-#PRODUCT_PACKAGES += \
-#    Gello
+    fingerprintd
 
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8996 \
-    libloc_eng \
-    libloc_api_v02 \
-    libloc_ds_api \
     libcurl \
     libgnsspps
 
@@ -228,6 +245,7 @@ PRODUCT_PACKAGES += \
     libOmxQcelp13Enc \
     libOmxVdec \
     libOmxVenc \
+    libOmxVdecHevc \
     libstagefrighthw
 
 # Power
@@ -241,13 +259,20 @@ PRODUCT_PACKAGES += \
 # RIL
 PRODUCT_PACKAGES += \
     librmnetctl \
-    rmnetcli \
     libxml2 \
     libprotobuf-cpp-full
 
 # Sensors
 PRODUCT_PACKAGES += \
     sensors.msm8996
+
+# LePref settigs modules
+PRODUCT_PACKAGES += \
+    LePref
+
+# LePref Files
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,device/leeco/msm8996-common/lepref/files,/system/etc)
 
 # Wifi
 PRODUCT_PACKAGES += \

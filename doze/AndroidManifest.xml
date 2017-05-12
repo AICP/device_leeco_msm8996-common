@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="cyanogenmod.permission.MANAGE_REMOTE_PREFERENCES" />
-
+    
     <uses-sdk
         android:minSdkVersion="24"
         android:targetSdkVersion="24"/>
@@ -26,7 +26,7 @@
         </receiver>
 
         <service android:name="com.cyanogenmod.settings.doze.DozeService"
-                 android:permission="DozeService">
+                 android:permission="LetvDozeService">
         </service>
 
         <activity
