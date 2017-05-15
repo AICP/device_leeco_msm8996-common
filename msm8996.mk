@@ -220,6 +220,9 @@ PRODUCT_PACKAGES += \
     android.hidl.manager@1.0 \
     android.hidl.manager@1.0_system
 
+PRODUCT_BOOT_JARS := \
+    android.hidl.manager-V1.0-java
+
 # IPA Manager
 PRODUCT_PACKAGES += \
     ipacm \
