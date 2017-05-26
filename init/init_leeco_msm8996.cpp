@@ -149,15 +149,23 @@ void vendor_load_properties() {
     {
         // This is LEX720
         property_set("ro.product.model", "LEX720");
+        property_set("ro.product.name", "ZL1_CN");
         // Dual SIM
+        property_set("persist.multisim.config", "dsds");
         property_set("persist.radio.multisim.config", "dsds");
+        property_set("ro.build.fingerprint", "LeEco/ZL1_CN/le_zl1:6.0.1/WAXCNFN5902303282S/letv03281232:user/release-keys");
+        property_set("ro.build.description", "le_zl1-user 6.0.1 WAXCNFN5902303282S eng.letv.20170328.122958 release-keys");
     }
     else if (isLEX727)
     {
         // This is LEX727
         property_set("ro.product.model", "LEX727");
+        property_set("ro.product.name", "ZL1_NA");
         // Single SIM
+        property_set("persist.multisim.config", "NA");
         property_set("persist.radio.multisim.config", "NA");
+        property_set("ro.build.fingerprint", "LeEco/ZL1_NA/le_zl1:6.0.1/WEXNAOP5802101261S/letv01261206:user/release-keys");
+        property_set("ro.build.description", "le_zl1-user 6.0.1 WEXNAOP5802101261S eng.letv.20170126.120318 release-keys");
     }
     else if (isLEX820)
     {
