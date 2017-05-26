@@ -175,7 +175,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.sar_mode=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.radio.cs_srv_type=1 \
+    persist.radio.cs_srv_type=0 \
     persist.radio.calls.on.ims=0 \
     persist.radio.jbims=0 \
     persist.radio.csvt.enabled=false \
@@ -216,10 +216,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Volte
 PRODUCT_PROPERTY_OVERRIDES += \
-persist.dbg.volte_avail_ovr=1 \
-persist.dbg.vt_avail_ovr=1
-
-# WIFI CALLING
-PRODUCT_PROPERTY_OVERRIDES += \
-persist.data.iwlan.enable=true \
-persist.dbg.wfc_avail_ovr=1
+    persist.dbg.volte_avail_ovr=1 \
+    persist.dbg.vt_avail_ovr=1 \
+    persist.radio.jbims=true \
+    persist.rcs.supported=1 \
+    persist.radio.domain.ps=false \
+    persist.radio.VT_HYBRID_ENABLE=1 \
+    persist.radio.VT_ENABLE=1 \
+    persist.radio.REVERSE_QMI=0 \
+    persist.radio.ROTATION_ENABLE=1 \
+    persist.radio.calls.on.ims=true \
+    persist.data.iwlan.enable=true \
+    persist.dbg.wfc_avail_ovr=1
