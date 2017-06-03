@@ -37,6 +37,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.audiorec=false \
     persist.audio.fluence.speaker=true \
     tunnel.audio.encode=false \
+    media.aac_51_output_enabled=true \
     audio.offload.buffer.size.kb=32 \
     audio.offload.video=true \
     audio.offload.pcm.16bit.enable=true \
