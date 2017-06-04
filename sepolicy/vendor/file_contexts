@@ -33,3 +33,6 @@
 
 # legacy
 /data/misc/tloc(/.*)?                                                    u:object_r:tlocd_data_file:s0
+
+/sys/remote/enable                     u:object_r:sysfs_ir_enable:s0
+/dev/ttyHSL1                           u:object_r:consumer_ir_device:s0
