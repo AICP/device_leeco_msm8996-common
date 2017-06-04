@@ -24,3 +24,6 @@ allow init proc:lnk_file { setattr };
 allow init cameraserver:process { noatsecure };
 allow init hal_camera:process { noatsecure };
 allow init mm-qcamerad:process { noatsecure };
+
+allow init consumer_ir_device:file relabelto;
+
