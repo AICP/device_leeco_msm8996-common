@@ -33,3 +33,6 @@
 
 /sys/devices/soc/75ba000\.i2c/i2c-12/12-[0-9a-f]+/input/input[0-9]+/0dbutton                   u:object_r:proc_touchpanel:s0
 /sys/devices/soc/75ba000\.i2c/i2c-12/12-[0-9a-f]+/keys_on                                      u:object_r:proc_touchpanel:s0
+
+/sys/remote/enable                     u:object_r:sysfs_ir_enable:s0
+/dev/ttyHSL1                           u:object_r:consumer_ir_device:s0
