@@ -34,3 +34,4 @@
 
 # legacy
 /data/misc/tloc(/.*)?                                                    u:object_r:tlocd_data_file:s0
+

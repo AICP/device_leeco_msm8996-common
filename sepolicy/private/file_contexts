@@ -1,2 +1,5 @@
 # data
 /(vendor|system/vendor)/lib(64)?/libQSEEComAPI\.so                          u:object_r:vendor_qsee_file:s0
+
+/sys/remote/enable                     u:object_r:sysfs_ir_enable:s0
+/dev/ttyHSL1                           u:object_r:consumer_ir_device:s0
