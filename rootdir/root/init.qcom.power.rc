@@ -214,9 +214,15 @@ on property:dev.bootcomplete=1
     write /sys/devices/system/cpu/cpu1/online 1
     write /sys/devices/system/cpu/cpu2/online 1
     write /sys/devices/system/cpu/cpu3/online 1
+    write /proc/sys/Net/IPV4/tcp_congestion_control westwood
 
 # VM
     write /proc/sys/vm/dirty_background_ratio 85
     write /proc/sys/vm/dirty_expire_centisecs 10
     write /proc/sys/vm/swappiness 5
     write /proc/sys/vm/vfs_cache_pressure 5
+    write /sys/block/zram0/disksize 283115520
+    mkswap /dev/block/zram0 > /dev/null 2>&1
+    swapon /dev/block/zram0 > /dev/null 2>&1
+    swapoff /dev/block/zram0 > /dev/null 2>&1
+    write /sys/block/zram0/reset 1
