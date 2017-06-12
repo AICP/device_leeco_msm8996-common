@@ -6,3 +6,15 @@ allow system_server sensors_persist_file:dir search;
 allow system_server sysfs_vibrator:file rw_file_perms;
 
 allow system_server consumer_ir_device:chr_file { rw_file_perms };
+
+allow system_server drmserver:process setsched;
+allow system_server keystore:process setsched;
+allow system_server mediacodec:process setsched;
+allow system_server mediadrmserver:process setsched;
+allow system_server mediaextractor:process setsched;
+allow system_server vold:process setsched;
+allow system_server zygote:process setsched;
+
+allow system_server user_profile_data_file:dir { open read };
+allow system_server user_profile_data_file:dir { add_name remove_name write };
+allow system_server user_profile_data_file:file rename;
