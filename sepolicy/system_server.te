@@ -14,3 +14,5 @@ allow system_server mediadrmserver:process setsched;
 allow system_server mediaextractor:process setsched;
 allow system_server vold:process setsched;
 allow system_server zygote:process setsched;
+
+allow system_server user_profile_data_file:dir { open read };
