@@ -2,3 +2,10 @@ allow kernel vfat:file open;
 allow kernel self:capability { dac_read_search dac_override };
 allow kernel self:socket create;
 allow kernel msm_irqbalanced:process setsched;
+
+allow kernel interfacer:process setsched;
+allow kernel platform_app:process setsched;
+allow kernel priv_app:process setsched;
+allow kernel radio:process setsched;
+allow kernel system_app:process setsched;
+allow kernel untrusted_app:process setsched;
