@@ -161,34 +161,34 @@ void vendor_load_properties() {
     if (isLEX720)
     {
         // This is LEX720
-        property_set("ro.product.model", "LEX720");
+        property_override("ro.product.model", "LEX720");
         // Dual SIM
         property_set("persist.radio.multisim.config", "dsds");
     }
     else if (isLEX727)
     {
         // This is LEX727
-        property_set("ro.product.model", "LEX727");
+        property_override("ro.product.model", "LEX727");
         // Single SIM
         property_set("persist.radio.multisim.config", "NA");
     }
     else if (isLEX820)
     {
         // This is LEX820
-        property_set("ro.product.model", "LEX820");
+        property_override("ro.product.model", "LEX820");
         // Dual SIM
         property_set("persist.radio.multisim.config", "dsds");
     }
     else if (isLEX829)
     {
         // This is LEX829
-        property_set("ro.product.model", "LEX829");
+        property_override("ro.product.model", "LEX829");
         // Dual SIM
         property_set("persist.radio.multisim.config", "dsds");
     }
     else
     {
-        property_set("ro.product.model", "UNKNOWN");
+        property_override("ro.product.model", "UNKNOWN");
     }
 
     // Common properties
