@@ -8,6 +8,12 @@ on boot
     write /sys/devices/system/cpu/cpu2/online 1
     write /sys/devices/system/cpu/cpu3/online 1
 
+    # No overclock plz
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 2188800
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 2188800
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 2342400
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 2342400
+
     # Update foreground and background cpusets
     write /dev/cpuset/foreground/cpus 0-3
     write /dev/cpuset/foreground/boost/cpus 0-3
@@ -45,8 +51,8 @@ on enable-low-power
 
     # Enable Adaptive LMK
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
-    write /sys/module/lowmemorykiller/parameters/adj "0,200,300,700,900,906"
-    write /sys/module/lowmemorykiller/parameters/minfree "27648,41472,48384,72378,84375,121875"
+    write /sys/module/lowmemorykiller/parameters/adj "0,58,176,294,411,1000"
+    write /sys/module/lowmemorykiller/parameters/minfree "19352,29028,58056,135464,145140"
     write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 159375
 
     # Configure governor settings for little cluster
@@ -214,18 +220,8 @@ on property:dev.bootcomplete=1
     write /proc/sys/net/unix/max_dgram_qlen 600
 
 # Kernel tuning
-    chown root system /sys/devices/system/cpu/cpu0/online
-    chown root system /sys/devices/system/cpu/cpu1/online
-    chown root system /sys/devices/system/cpu/cpu2/online
-    chown root system /sys/devices/system/cpu/cpu3/online
-    chmod 0664 /sys/devices/system/cpu/cpu0/online
-    chmod 0664 /sys/devices/system/cpu/cpu1/online
-    chmod 0664 /sys/devices/system/cpu/cpu2/online
-    chmod 0664 /sys/devices/system/cpu/cpu3/online
-    write /sys/devices/system/cpu/cpu0/online 1
-    write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu2/online 1
-    write /sys/devices/system/cpu/cpu3/online 1
+    write /proc/sys/net/ipv4/tcp_congestion_control "westwood"
+    write /sys/kernel/dyn_fsync/Dyn_fsync_active 1
 
 # VM
     write /proc/sys/vm/dirty_background_ratio 85
