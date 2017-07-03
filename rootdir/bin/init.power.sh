@@ -53,24 +53,8 @@ write /sys/devices/system/cpu/cpu2/cpufreq/interactive/max_freq_hysteresis 39000
 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 300000
 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/ignore_hispeed_on_notif 0
 
-# if EAS is present, switch to sched governor (no effect if not EAS)
-write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "sched"
-write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "sched"
-
 # re-enable thermal hotplug
 write /sys/module/msm_thermal/core_control/enabled 1
-
-# input boost configuration
-write /sys/module/cpu_boost/parameters/input_boost_freq "0:307200 2:307200 3:307200 4:307200"
-write /sys/module/cpu_boost/parameters/input_boost_ms 40
-
-# LMK
-chmod 666 /sys/module/lowmemorykiller/parameters/minfree
-chown root /sys/module/lowmemorykiller/parameters/minfree
-write /sys/module/lowmemorykiller/parameters/minfree "29028,38704,48380,106436,145140,154816"
-
-# CPU max freq
-write /sys/module/msm_performance/parameters/cpu_max_freq "0:2188800 1:2188800 2:2342400 3:2342400"
 
 # Setting b.L scheduler parameters
 write /proc/sys/kernel/sched_boost 0
