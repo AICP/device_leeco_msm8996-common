@@ -5,3 +5,5 @@ allow sysinit proc_dirty_ratio:file { getattr open read write };
 allow sysinit rootfs:dir { add_name write };
 allow sysinit rootfs:lnk_file create;
 allow sysinit storage_file:dir getattr;
+
+allow sysinit system_block_device:blk_file read;
