@@ -7,3 +7,6 @@ allow sysinit rootfs:lnk_file create;
 allow sysinit storage_file:dir getattr;
 
 allow sysinit system_block_device:blk_file read;
+
+allow sysinit system_block_device:blk_file open;
+allow sysinit system_block_device:blk_file ioctl;
