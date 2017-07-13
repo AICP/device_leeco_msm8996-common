@@ -1,0 +1,5 @@
+ifaadaemon                           u:object_r:ifaadaemon_service:s0
+
+# daizhiling add for goodix_fingerprint begin
+goodix.fp                                 u:object_r:gx_fpd_service:s0
+# daizhiling add for goodix_fingerprint end
