@@ -1,6 +1,3 @@
-type mbn_daemon, domain;
-type mbn_daemon_exec, exec_type, file_type;
-
 init_daemon_domain(mbn_daemon)
 
 allow mbn_daemon self:socket { create getopt ioctl read write };
