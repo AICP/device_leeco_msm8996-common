@@ -1,6 +1,16 @@
 r_dir_file(netd, firmware_file)
 allow netd vfat:file r_file_perms;
 
+allow netd firmware_file:dir search;
+
+allow netd self:capability { setuid sys_module setgid };
+allow netd self:packet_socket create_socket_perms;
+
+allow netd device:file write;
+
+allow netd eas_sched:dir { r_dir_perms };
+allow netd eas_sched:file { rw_file_perms };
+
 allow netd remotecontrol_app:fd use;
 allow netd remotecontrol_app:tcp_socket { read write };
 allow netd remotecontrol_app:tcp_socket getopt;
