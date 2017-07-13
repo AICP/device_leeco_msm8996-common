@@ -1,0 +1,6 @@
+type simalliance, domain;
+app_domain(simalliance)
+allow simalliance activity_service:service_manager find;
+allow simalliance app_data_file:file { rw_file_perms };
+allow simalliance app_data_file:file execute;
+
