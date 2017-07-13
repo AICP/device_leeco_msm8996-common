@@ -9,3 +9,7 @@ allow kernel priv_app:process setsched;
 allow kernel radio:process setsched;
 allow kernel system_app:process setsched;
 allow kernel untrusted_app:process setsched;
+
+allow kernel kcal_dev:dir relabelto;
+allow kernel kcal_dev:file relabelto;
+allow kernel kcal_dev:lnk_file relabelto;
