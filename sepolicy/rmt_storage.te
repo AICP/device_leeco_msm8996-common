@@ -1,1 +1,4 @@
+allow rmt_storage debugfs_rmts:file write;
+allow rmt_storage debugfs_rmts:file open;
+
 allow rmt_storage self:capability { dac_override net_raw };
