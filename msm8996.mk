@@ -246,14 +246,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     sensors.msm8996
 
-# LePref settigs modules
-PRODUCT_PACKAGES += \
-    LePref
-
-# LePref Files
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,device/leeco/msm8996-common/lepref/files,/system/etc)
-
 # Wifi
 PRODUCT_PACKAGES += \
     ipacm \
