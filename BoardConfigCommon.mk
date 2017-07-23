@@ -154,14 +154,15 @@ MAX_VIRTUAL_DISPLAY_DIMENSION := 4096
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
-# Enable dexpreopt to speed boot time
-#ifeq ($(HOST_OS),linux)
-#  ifeq ($(call match-word-in-list,$(TARGET_BUILD_VARIANT),user),true)
-#    ifeq ($(WITH_DEXPREOPT),)
-#      WITH_DEXPREOPT := true
-#    endif
-#  endif
-#endif
+# Dexpreopt
+ifeq ($(HOST_OS),linux)
+  ifneq ($(TARGET_BUILD_VARIANT),eng)
+    ifeq ($(WITH_DEXPREOPT),)
+      WITH_DEXPREOPT := true
+      WITH_DEXPREOPT_BOOT_IMG_ONLY := true
+    endif
+  endif
+endif
 
 # GPS
 TARGET_NO_RPC := true
