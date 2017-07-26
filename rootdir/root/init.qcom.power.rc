@@ -215,6 +215,9 @@ on property:dev.bootcomplete=1
 # Kernel tuning
     write /proc/sys/net/ipv4/tcp_congestion_control "westwood"
 
+    write /sys/module/msm_thermal/core_control/enabled 0
+    write /sys/module/msm_thermal/parameters/enabled Y
+
 # VM
     write /proc/sys/vm/dirty_background_ratio 85
     write /proc/sys/vm/dirty_expire_centisecs 10
