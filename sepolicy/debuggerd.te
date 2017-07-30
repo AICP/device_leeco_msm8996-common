@@ -1,1 +1,2 @@
 allow debuggerd gx_fpd_lib_file:file { getattr open read };
+allow debuggerd app_data_file:dir search;
