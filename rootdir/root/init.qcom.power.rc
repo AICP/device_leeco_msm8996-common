@@ -52,14 +52,15 @@ on enable-low-power
 
     # Configure governor settings for little cluster
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_duration 0
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_sched_load 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_migration_notif 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay "20000 960000:40000 1228800:40000 1478400:40000"
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 90
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay "40000 960000:50000 1228800:60000 1478400:70000"
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 99
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate 20000
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 307200
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 902400
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy 0
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "80 480000:75 556800:80 729600:85 960000:90 1036800:95 1228800:100"
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "75 480000:80 556800:80 729600:85 960000:90 1036800:95 1228800:100"
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 19000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 79000
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 307200
@@ -71,25 +72,20 @@ on enable-low-power
 
     # Configure governor settings for big cluster
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "interactive"
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/boostpulse_duration 0
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/use_sched_load 1
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/use_migration_notif 1
-    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/above_hispeed_delay "30000 1036800:60000 1248000:60000 1478400:60000 1824000:60000"
-    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load 90
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/above_hispeed_delay "40000 1036800:60000 1248000:70000 1478400:80000 1824000:90000"
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load 99
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate 30000
-    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/hispeed_freq 307200
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/hispeed_freq 902400
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/io_is_busy 0
-    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "80 729600:75 940800:80 1036800:85 1401600:90 1824000:95 2150400:100"
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "75 729600:80 940800:80 1036800:85 1401600:90 1824000:95 2150400:100"
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 19000
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/max_freq_hysteresis 79000
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 307200
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/ignore_hispeed_on_notif 0
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/enable_prediction 1
-
-    #Switch to blu_active
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "blu_active"
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "blu_active"
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "blu_active"
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor "blu_active"
 
     # Switch to schedutil governor - Only has effect if EAS is enabled
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "schedutil"
@@ -217,6 +213,8 @@ on property:dev.bootcomplete=1
 
     write /sys/module/msm_thermal/core_control/enabled 0
     write /sys/module/msm_thermal/parameters/enabled Y
+    write /sys/kernel/alucard_hotlplug/hotplug_enable 0
+    write /sys/module/lazyplug/parameters/lazyplug_active 1
 
 # VM
     write /proc/sys/vm/dirty_background_ratio 85
