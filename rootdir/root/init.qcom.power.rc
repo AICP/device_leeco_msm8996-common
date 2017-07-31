@@ -213,8 +213,6 @@ on property:dev.bootcomplete=1
 
     write /sys/module/msm_thermal/core_control/enabled 0
     write /sys/module/msm_thermal/parameters/enabled Y
-    write /sys/kernel/alucard_hotlplug/hotplug_enable 0
-    write /sys/module/lazyplug/parameters/lazyplug_active 1
 
 # VM
     write /proc/sys/vm/dirty_background_ratio 85
