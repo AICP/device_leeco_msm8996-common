@@ -47,3 +47,5 @@ allow system_server user_profile_data_file:dir { add_name remove_name write };
 allow system_server user_profile_data_file:file rename;
 allow system_server user_profile_data_file:dir { r_dir_perms };
 allow system_server user_profile_data_file:file { r_file_perms };
+
+allow system_server sdcardd:process setsched;
