@@ -65,6 +65,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     init.power.sh
 
+# Boot animation
+TARGET_BOOTANIMATION_TEXTURE_CACHE := true
+TARGET_BOOTANIMATION_PRELOAD := true
+
 # Audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/aanc_tuning_mixer.txt:system/etc/aanc_tuning_mixer.txt \
