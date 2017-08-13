@@ -35,6 +35,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.voicecall=true \
     persist.audio.fluence.voicerec=true \
     persist.audio.fluence.speaker=false \
+    persist.audio.fluence.audiorec=true \
     tunnel.audio.encode=false \
     media.aac_51_output_enabled=true \
     audio.heap.size.multiplier=7 \
