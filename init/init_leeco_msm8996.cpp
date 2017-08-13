@@ -191,14 +191,5 @@ void vendor_load_properties() {
         property_override("ro.product.model", "UNKNOWN");
     }
 
-    // Common properties
-    property_set("persist.radio.ignore_dom_time", "5");
-    // Enable WiFiCalling
-    property_set("persist.data.iwlan.enable", "true");
-    // Enable VoLTE
-    property_set("persist.radio.cs_srv_type", "0");
-    property_set("persist.radio.calls.on.ims", "true");
-    property_set("persist.radio.jbims", "true");
-
     init_alarm_boot_properties();
 }
