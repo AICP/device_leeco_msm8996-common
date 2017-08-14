@@ -9,7 +9,6 @@
 # Goodix Fingerprint libs
 /system/lib/libfp_client.so      u:object_r:gx_fp_lib_file:s0
 
-
 #For Goodix fingerprint
 /dev/gf66xx-spi     u:object_r:gx_fpd_device:s0
 /dev/ttyACM[0-9]*   u:object_r:gx_fpd_device:s0
@@ -21,6 +20,10 @@
 /sys/devices/soc/qpnp-smbcharger.*/power_supply/le_ab(/.*)?                u:object_r:sysfs_batteryinfo:s0
 
 # Vibrator config
+
+# FRP partition
+/dev/block/bootdevice/by-name/config                            u:object_r:frp_block_device:s0
+
 /sys/devices/virtual/timed_output/vibrator/vtg_level            u:object_r:sysfs_vibrator:s0
 /sys/devices/virtual/timed_output/vibrator/vtg_max              u:object_r:sysfs_vibrator:s0
 /sys/devices/virtual/timed_output/vibrator/vtg_min              u:object_r:sysfs_vibrator:s0
@@ -49,3 +52,7 @@
 /sys/bus/platform/drivers/kcal_ctrl(/.*)?		u:object_r:kcal_dev:s0
 
 /data/misc/netmgr(/.*)?                                         u:object_r:net_data_file:s0
+
+/data/oemnvitems(/.*)?                                          u:object_r:nv_data_file:s0
+
+/system/bin/yep_qmi_server                                      u:object_r:yep_qmi_server_exec:s0
