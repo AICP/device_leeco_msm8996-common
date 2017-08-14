@@ -3,4 +3,5 @@ allow netmgrd self:capability dac_override;
 get_prop(netmgrd, diag_prop);
 
 allow netmgrd diag_device:chr_file { rw_file_perms };
+allow netmgrd net_data_file:file create_file_perms;
 
