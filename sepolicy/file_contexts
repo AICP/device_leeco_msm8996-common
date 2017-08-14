@@ -26,7 +26,6 @@
 /sys/devices/virtual/timed_output/vibrator/vtg_min              u:object_r:sysfs_vibrator:s0
 /sys/devices/virtual/timed_output/vibrator/vtg_default          u:object_r:sysfs_vibrator:s0
 
-
 /dev/smartpa_f0_detect u:object_r:smartpa_f0_detect_device:s0
 /dev/i2c-*                                      u:object_r:smartamp_device:s0
 
@@ -49,4 +48,4 @@
 /sys/devices/platform/kcal_ctrl.0(/.*)?			u:object_r:kcal_dev:s0
 /sys/bus/platform/drivers/kcal_ctrl(/.*)?		u:object_r:kcal_dev:s0
 
-
+/data/misc/netmgr(/.*)?                                         u:object_r:net_data_file:s0
