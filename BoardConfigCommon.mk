@@ -164,6 +164,8 @@ ifeq ($(HOST_OS),linux)
   endif
 endif
 
+TARGET_WANTS_AAPT_COMPRESS := true
+
 # GPS
 TARGET_NO_RPC := true
 USE_DEVICE_SPECIFIC_GPS := true
