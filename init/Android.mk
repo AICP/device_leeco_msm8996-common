@@ -23,5 +23,6 @@ LOCAL_C_INCLUDES := system/core/init
 LOCAL_STATIC_LIBRARIES := libbase
 LOCAL_SRC_FILES := init_leeco_msm8996.cpp
 LOCAL_MODULE := libinit_leeco_msm8996
+LOCAL_STATIC_LIBRARIES += libbase
 
 include $(BUILD_STATIC_LIBRARY)
