@@ -12,47 +12,6 @@ function copy() {
 }
 
 ################################################################################
-
-# disable thermal hotplug to switch governor
-write /sys/module/msm_thermal/core_control/enabled 0
-
-# bring back main cores CPU 0,2
-write /sys/devices/system/cpu/cpu0/online 1
-write /sys/devices/system/cpu/cpu2/online 1
-
-write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
-write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_sched_load 1
-write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_migration_notif 1
-write /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay 19000
-write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 90
-write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate 20000
-write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 960000
-write /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy 1
-write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 80
-write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 19000
-write /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 79000
-write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 300000
-write /sys/devices/system/cpu/cpu0/cpufreq/interactive/ignore_hispeed_on_notif 0
-
-write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
-write /sys/devices/system/cpu/cpu2/cpufreq/interactive/use_sched_load 1
-write /sys/devices/system/cpu/cpu2/cpufreq/interactive/use_migration_notif 1
-write /sys/devices/system/cpu/cpu2/cpufreq/interactive/above_hispeed_delay "19000 1400000:39000 1700000:39000"
-
-write /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load 90
-write /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate 20000
-write /sys/devices/system/cpu/cpu2/cpufreq/interactive/hispeed_freq 1248000
-write /sys/devices/system/cpu/cpu2/cpufreq/interactive/io_is_busy 1
-write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "85 1500000:90 1800000:95"
-
-write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 19000
-write /sys/devices/system/cpu/cpu2/cpufreq/interactive/max_freq_hysteresis 39000
-write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 300000
-write /sys/devices/system/cpu/cpu2/cpufreq/interactive/ignore_hispeed_on_notif 0
-
-# re-enable thermal hotplug
-write /sys/module/msm_thermal/core_control/enabled 1
-
 # Setting b.L scheduler parameters
 write /proc/sys/kernel/sched_boost 0
 write /proc/sys/kernel/sched_migration_fixup 1
@@ -85,14 +44,3 @@ for memlat in /sys/class/devfreq/*qcom,memlat-cpu* ; do
     write $memlat/governor "mem_latency"
     write $memlat/polling_interval 10
 done
-
-# Enable all LPMs by default
-# This will enable C4, D4, D3, E4 and M3 LPMs
-write /sys/module/lpm_levels/parameters/sleep_disabled N
-
-# On debuggable builds, enable console_suspend if uart is enabled to save power
-# Otherwise, disable console_suspend to get better logging for kernel crashes
-if [[ $(getprop ro.debuggable) == "1" && ! -e /sys/class/tty/ttyHSL0 ]]
-then
-    write /sys/module/printk/parameters/console_suspend N
-fi
