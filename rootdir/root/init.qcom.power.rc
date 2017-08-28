@@ -213,7 +213,6 @@ on property:dev.bootcomplete=1
     write /proc/sys/net/unix/max_dgram_qlen 600
 
 # Kernel tuning
-    write /proc/sys/net/ipv4/tcp_congestion_control "westwood"
     write /sys/module/msm_thermal/core_control/enabled 0
     write /sys/module/msm_thermal/parameters/enabled Y
     write /sys/kernel/mm/ksm/run 0

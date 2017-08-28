@@ -10,3 +10,5 @@ allow untrusted_app kernel:dir getattr;
 allow untrusted_app sysfs:dir read;
 allow untrusted_app sysfs:file getattr;
 allow untrusted_app tombstone_data_file:dir getattr;
+
+allow untrusted_app cache_file:file { getattr read };
