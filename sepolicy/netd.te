@@ -18,3 +18,5 @@ allow netd remotecontrol_app:tcp_socket getopt;
 allow netd untrusted_app:unix_stream_socket { read write };
 
 allow netd app_data_file:file read;
+
+allow netd remotecontrol_app:tcp_socket setopt;
