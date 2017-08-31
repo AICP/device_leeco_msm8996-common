@@ -85,9 +85,6 @@ PRODUCT_COPY_FILES += \
 # Haters gonna hate..
 PRODUCT_CHARACTERISTICS := nosdcard
 
-#PRODUCT_PROPERTY_OVERRIDES += \
-#    ro.sys.sdcardfs=true
-
 # Alipay / WeChat
 PRODUCT_BOOT_JARS += \
     org.ifaa.android.manager
@@ -159,10 +156,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fingerprintd \
     fingerprint.msm8996
-
-# Gello
-#PRODUCT_PACKAGES += \
-#    Gello
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -275,11 +268,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
 
-ifeq ($(TARGET_BUILD_VARIANT),eng)
-# Disable ADB authentication
-ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
-endif
-
 # Art
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dex2oat-flags=--no-watch-dog \
@@ -289,8 +277,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.sys.fw.dex2oat_thread_count=4
 
-# Model is set via init library
-PRODUCT_SYSTEM_PROPERTY_BLACKLIST := \
-    ro.product.model
+ifeq ($(TARGET_BUILD_VARIANT),eng)
+# Disable ADB authentication
+ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
+endif
 
 $(call inherit-product-if-exists, vendor/leeco/msm8996-common/msm8996-common-vendor.mk)
