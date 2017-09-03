@@ -36,3 +36,4 @@ allow remotecontrol_app wifi_service:service_manager find;
 allow remotecontrol_app audio_service:service_manager find;
 allow remotecontrol_app notification_service:service_manager find;
 allow remotecontrol_app port:tcp_socket name_connect;
+allow remotecontrol_app self:tcp_socket getattr;
