@@ -19,7 +19,14 @@
 
 #include <ui/GraphicBuffer.h>
 
+//needed by camera.msm8996.so
 const char *_ZN7android18gClientPackageNameE;
+const char *_ZN7android16CameraParameters19CLIENT_PACKAGE_NAMEE = "client-package-name";
+const char *_ZN7android16CameraParameters31KEY_SUPPORTED_VIDEO_SIZES_60FPSE = "support-60fps-video-sizes";
+void _ZN7android20DisplayEventReceiverC1Ev() {}
+
+// needed by libFNVfbEngineHAL.so
+void _ZN7android13GraphicBuffer10reallocateEjjij() {}
 
 extern "C" void _ZN7android13GraphicBufferC1EjjijjjP13native_handleb(
         const native_handle_t* handle,
@@ -51,3 +58,4 @@ extern "C" void _ZN7android20DisplayEventReceiverC1ENS_16ISurfaceComposer11Vsync
 extern "C" void _ZN7android20DisplayEventReceiverC1Ev() {
     _ZN7android20DisplayEventReceiverC1ENS_16ISurfaceComposer11VsyncSourceE;
 }
+
