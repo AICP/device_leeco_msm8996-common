@@ -27,3 +27,5 @@ allow init mm-qcamerad:process { noatsecure };
 
 allow init consumer_ir_device:file relabelto;
 
+# required for LD_SHIM_LIBS
+allow init { domain -lmkd -crash_dump }:process noatsecure;
