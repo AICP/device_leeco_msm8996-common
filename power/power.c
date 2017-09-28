@@ -71,8 +71,6 @@
 /* RPM runs at 19.2Mhz. Divide by 19200 for msec */
 #define RPM_CLK 19200
 
-#define DOUBLE_TAP_FILE "/proc/touchpanel/double_tap_enable"
-
 const char *parameter_names[] = {
     "vlow_count",
     "accumulated_vlow_time",
@@ -812,13 +810,6 @@ static int get_platform_low_power_stats(struct power_module *module,
     return 0;
 }
 
-void set_feature(struct power_module __unused *module, feature_t feature, int state) {
-    if (feature == POWER_FEATURE_DOUBLE_TAP_TO_WAKE) {
-        ALOGI("%s POWER_FEATURE_DOUBLE_TAP_TO_WAKE %s", __func__, (state ? "ON" : "OFF"));
-        sysfs_write(DOUBLE_TAP_FILE, state ? "1" : "0");
-    }
-}
-
 struct power_module HAL_MODULE_INFO_SYM = {
     .common = {
         .tag = HARDWARE_MODULE_TAG,
@@ -835,6 +826,5 @@ struct power_module HAL_MODULE_INFO_SYM = {
     .setInteractive = set_interactive,
     .get_number_of_platform_modes = get_number_of_platform_modes,
     .get_platform_low_power_stats = get_platform_low_power_stats,
-    .get_voter_list = get_voter_list,
-    .setFeature = set_feature
+    .get_voter_list = get_voter_list
 };
