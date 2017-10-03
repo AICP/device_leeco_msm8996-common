@@ -122,7 +122,6 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.4-service \
     camera.device@1.0-impl \
     Snap \
     libstlport
@@ -183,10 +182,6 @@ PRODUCT_PACKAGES += \
     fingerprintd \
     fingerprint.msm8996
 
-# Gatekeeper HAL
-PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0-impl
-
 # GPS
 PRODUCT_PACKAGES += \
     android.hardware.gnss@1.0 \
@@ -217,10 +212,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     ebtables \
     ethertypes
-
-# Keymaster
-PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0-impl
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -262,7 +253,6 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.0-impl \
     power.msm8996
 
 # QMI
