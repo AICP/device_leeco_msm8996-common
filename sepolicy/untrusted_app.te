@@ -12,3 +12,18 @@ allow untrusted_app sysfs:file getattr;
 allow untrusted_app tombstone_data_file:dir getattr;
 
 allow untrusted_app cache_file:file { getattr read };
+
+allow untrusted_app RIDL_data_file:dir getattr;
+allow untrusted_app adb_keys_file:dir getattr;
+allow untrusted_app apk_private_data_file:dir getattr;
+allow untrusted_app asec_image_file:dir getattr;
+allow untrusted_app audio_data_file:dir getattr;
+allow untrusted_app audio_pp_data_file:dir getattr;
+allow untrusted_app mpctl_socket:sock_file getattr;
+allow untrusted_app adb_data_file:dir getattr;
+allow untrusted_app audioserver_data_file:dir getattr;
+allow untrusted_app backup_data_file:dir getattr;
+allow untrusted_app bluetooth_data_file:dir getattr;
+allow untrusted_app bootchart_data_file:dir getattr;
+allow untrusted_app bootstat_data_file:dir getattr;
+allow untrusted_app install_data_file:file getattr;

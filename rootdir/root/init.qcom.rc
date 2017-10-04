@@ -480,7 +480,11 @@ on post-fs-data
     mkdir /data/system/perfd 0770 root system
     chmod 2770 /data/system/perfd
     rm /data/system/perfd/default_values
-    start perfd
+    mkdir /data/misc/perfd
+    restorecon /data/misc/perfd
+    chown root system /data/misc/perfd
+    chmod u+x /data/misc/perfd
+    chmod u+s /data/misc/perfd
 
     # NFC local data and nfcee xml storage
     mkdir /data/nfc 0770 nfc nfc
