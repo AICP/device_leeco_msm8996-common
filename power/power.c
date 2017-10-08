@@ -245,7 +245,7 @@ int __attribute__ ((weak)) power_hint_override(struct power_module *module, powe
 void interaction(int duration, int num_args, int opt_list[]);
 void release_request(int lock_handle);
 
-static long long calc_timespan_us(struct timespec start, struct timespec end) {
+long long calc_timespan_us(struct timespec start, struct timespec end) {
     long long diff_in_us = 0;
     diff_in_us += (end.tv_sec - start.tv_sec) * USINSEC;
     diff_in_us += (end.tv_nsec - start.tv_nsec) / NSINUS;
@@ -448,7 +448,7 @@ static void power_hint(struct power_module *module, power_hint_t hint,
             if (true || strncmp(governor, SCHED_GOVERNOR, strlen(SCHED_GOVERNOR)) == 0) {
                 // Setting the value of foreground schedtune boost to 50 and
                 // scaling_min_freq to 1100MHz.
-                int resources[] = {0x40800000, 1000, 0x40800100, 1000, 0x42C0C000, 0x32, 0x41800000, 0x33};
+                int resources[] = {0x40800000, 1100, 0x40800100, 1100, 0x42C0C000, 0x32, 0x41800000, 0x33};
                 interaction(duration, sizeof(resources)/sizeof(resources[0]), resources);
             } else { // Scheduler is HMP.
                 int resources[] = {0x41800000, 0x33, 0x40800000, 1000, 0x40800100, 1000, 0x40C00000, 0x1};
