@@ -61,10 +61,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:system/etc/permissions/android.hardware.vulkan.level.xml \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:system/etc/permissions/android.hardware.vulkan.version.xml
 
-# Ramdisk
-PRODUCT_PACKAGES += \
-    init.power.sh
-
 # Keylayouts
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/atmel_ts_key.kl:system/usr/keylayout/atmel_ts_key.kl \
@@ -73,6 +69,9 @@ PRODUCT_COPY_FILES += \
 
 # Haters gonna hate..
 PRODUCT_CHARACTERISTICS := nosdcard
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sys.sdcardfs=true
 
 # Alipay / WeChat
 PRODUCT_BOOT_JARS += \
@@ -341,5 +340,4 @@ PRODUCT_COPY_FILES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
 
-$(call inherit-product-if-exists, vendor/leeco/msm8996-common/msm8996-common-vendor.mk)
-
+$(call inherit-product, vendor/leeco/msm8996-common/msm8996-common-vendor.mk)
