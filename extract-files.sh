@@ -59,8 +59,6 @@ fi
 # Initialize the helper for common
 setup_vendor "$DEVICE_COMMON" "$VENDOR" "$LINEAGE_ROOT" true $clean_vendor
 
-extract "$MY_DIR"/proprietary-files-qc-perf.txt "$SRC" "$SECTION"
-
 extract "$MY_DIR"/proprietary-files-qc.txt "$SRC" "$SECTION"
 
 # Initialize the helper for device

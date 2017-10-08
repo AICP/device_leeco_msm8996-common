@@ -493,9 +493,9 @@ on post-fs-data
     mkdir /data/misc/SelfHost/socket/ 2770 system system
 
     # Create PERFD deamon related dirs
-    mkdir /data/system/perfd 0770 root system
-    chmod 2770 /data/system/perfd
-    rm /data/system/perfd/default_values
+    mkdir /data/vendor/perfd 0770 root system
+    chmod 2770 /data/vendor/perfd
+    rm /data/vendor/perfd/default_values
     mkdir /data/misc/perfd
     restorecon /data/misc/perfd
     chown root system /data/misc/perfd
