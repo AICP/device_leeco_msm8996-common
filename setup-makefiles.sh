@@ -44,9 +44,6 @@ write_headers "zl1 x2"
 # Common QC blobs
 write_makefiles "$MY_DIR"/proprietary-files-qc.txt
 
-# QC Perf blobs
-write_makefiles "$MY_DIR"/proprietary-files-qc-perf.txt
-
 # We are done with common
 write_footers
 
