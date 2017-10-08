@@ -93,8 +93,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # CNE
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.cne.feature=1 \
-    persist.dpm.feature=11
+    persist.cne.feature=1
 
 # Data modules
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -208,12 +207,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.data.df.iwlan_mux=9 \
     persist.data.df.dev_name=rmnet_usb0
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qualcomm.display.paneltype=1 \
-    ro.qualcomm.foss=1 \
-    config.foss.xml=1 \
-    config.foss.path="/system/etc/FOSSConfig.xml"
-
 # Timeservice
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.timed.enable=true
@@ -229,18 +222,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Fastcharge
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.le_fast_chrg_enable=1
-
-# Volte
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.dbg.volte_avail_ovr=1 \
-    persist.dbg.vt_avail_ovr=1 \
-    persist.radio.jbims=true \
-    persist.rcs.supported=1 \
-    persist.radio.domain.ps=false \
-    persist.radio.VT_HYBRID_ENABLE=1 \
-    persist.radio.VT_ENABLE=1 \
-    persist.radio.REVERSE_QMI=0 \
-    persist.radio.ROTATION_ENABLE=1 \
-    persist.radio.calls.on.ims=true \
-    persist.data.iwlan.enable=true \
-    persist.dbg.wfc_avail_ovr=1
