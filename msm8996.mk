@@ -313,6 +313,9 @@ PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-impl \
     thermal.msm8996
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/thermal-engine.conf:system/vendor/etc/thermal-engine.conf
+
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service \
