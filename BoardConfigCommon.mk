@@ -164,6 +164,7 @@ VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
 
 OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 USE_OPENGL_RENDERER := true
+TARGET_USES_QCOM_BSP := true
 
 # Enable dexpreopt to speed boot time
 ifeq ($(HOST_OS),linux)
