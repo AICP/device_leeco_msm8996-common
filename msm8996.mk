@@ -143,6 +143,10 @@ PRODUCT_PACKAGES += \
     com.quicinc.cne \
     services-ext
 
+# Copy prebuilt libc
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/libshims/libc.so:system/lib/libc.so
+
 # Display
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
