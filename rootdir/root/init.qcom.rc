@@ -57,6 +57,15 @@ on init
     chown root system /sys/fs/cgroup/memory/bg/tasks
     chmod 0660 /sys/fs/cgroup/memory/bg/tasks
 
+    # fix themral engine
+    mkdir /proc/sys/kernel/affinity_core
+    chown root root /proc/sys/kernel/affinity_core
+    chmod 664 /proc/sys/kernel/affinity_core
+
+    mkdir /proc/sys/kernel/affinity_switch
+    chown root root /proc/sys/kernel/affinity_switch
+    chmod 664 /proc/sys/kernel/affinity_switch
+
 on late-fs
     # boot time fs tune
     write /sys/block/sda/queue/iostats 0
