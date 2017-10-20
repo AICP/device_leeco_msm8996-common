@@ -128,9 +128,8 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.4-impl \
     camera.device@3.2-impl \
-    vendor.qti.hardware.camera.device@1.0 \
+    android.hardware.camera.provider@2.4-impl
     libshims_camera \
     Snap
 
@@ -180,9 +179,8 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint sensor
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.0-service \
-    fingerprintd \
-    fingerprint.msm8996
+    fingerprint.msm8996 \
+    android.hardware.biometrics.fingerprint@2.1-service
 
 # Gatekeeper HAL
 PRODUCT_PACKAGES += \
@@ -296,6 +294,7 @@ PRODUCT_PACKAGES += \
 # Thermal
 PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-impl \
+    android.hardware.thermal@1.0-service
 
 # USB
 PRODUCT_PACKAGES += \
