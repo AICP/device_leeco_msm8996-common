@@ -132,7 +132,6 @@ PRODUCT_PACKAGES += \
     camera.device@3.2-impl \
     vendor.qti.hardware.camera.device@1.0 \
     libshims_camera \
-    libshims_qcamera-daemon \
     Snap
 
 # Connectivity Engine support (CNE)
