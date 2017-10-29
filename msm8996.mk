@@ -266,7 +266,7 @@ PRODUCT_PACKAGES += \
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power@1.0-impl \
-    power.qcom
+    power.msm8996
 
 # QMI
 PRODUCT_PACKAGES += \
