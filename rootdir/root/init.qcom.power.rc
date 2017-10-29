@@ -201,5 +201,7 @@ on property:dev.bootcomplete=1
     swapoff /dev/block/zram0 > /dev/null 2>&1
     write /sys/block/zram0/reset 1
 
+    write /sys/modules/zswap/parameters/enabled 1
+
 on property:init.svc.recovery=running
     trigger enable-low-power
