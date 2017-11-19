@@ -26,7 +26,7 @@
  * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-#define LOG_NIDEBUG 0
+//#define LOG_NDEBUG 0
 
 #include <errno.h>
 #include <string.h>
@@ -36,8 +36,10 @@
 #include <dlfcn.h>
 #include <stdlib.h>
 
+#define ATRACE_TAG (ATRACE_TAG_POWER | ATRACE_TAG_HAL)
 #define LOG_TAG "QCOM PowerHAL"
 #include <utils/Log.h>
+#include <cutils/trace.h>
 #include <hardware/hardware.h>
 #include <hardware/power.h>
 
@@ -139,6 +141,7 @@ static int process_boost(int boost_handle, int duration)
         ALOGE("Can't obtain scaling governor.");
         return -1;
     }
+    ALOGV("process_boost: %d MS", duration);
     if (strncmp(governor, SCHED_GOVERNOR, strlen(SCHED_GOVERNOR)) == 0) {
         launch_resources = eas_launch_resources;
         launch_resources_size = sizeof(eas_launch_resources) / sizeof(eas_launch_resources[0]);
@@ -146,6 +149,9 @@ static int process_boost(int boost_handle, int duration)
                        strlen(INTERACTIVE_GOVERNOR)) == 0) { /*HMP boost*/
         launch_resources = hmp_launch_resources;
         launch_resources_size = sizeof(hmp_launch_resources) / sizeof(hmp_launch_resources[0]);
+    } else {
+        ALOGE("Unsupported governor.");
+        return -1;
     }
     boost_handle = interaction_with_handle(
         boost_handle, duration, launch_resources_size, launch_resources);
@@ -182,7 +188,7 @@ static int process_video_encode_hint(void *metadata)
     if (video_encode_metadata.state == 1) {
         int duration = 2000; // boosts 2s for starting encoding
         boost_handle = process_boost(boost_handle, duration);
-        ALOGD("LAUNCH ENCODER-ON: %d MS", duration);
+        ALOGV("LAUNCH ENCODER-ON: %d MS", duration);
         if ((strncmp(governor, INTERACTIVE_GOVERNOR, strlen(INTERACTIVE_GOVERNOR)) == 0) &&
                 (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
             /* 1. cpufreq params
@@ -218,7 +224,7 @@ static int process_video_encode_hint(void *metadata)
 
             perform_hint_action(video_encode_metadata.hint_id,
                     resource_values, ARRAY_SIZE(resource_values));
-            ALOGI("Video Encode hint start");
+            ALOGV("Video Encode hint start");
             return HINT_HANDLED;
         } else if ((strncmp(governor, SCHED_GOVERNOR, strlen(SCHED_GOVERNOR)) == 0) &&
                 (strlen(governor) == strlen(SCHED_GOVERNOR))) {
@@ -235,7 +241,7 @@ static int process_video_encode_hint(void *metadata)
 
             perform_hint_action(video_encode_metadata.hint_id,
                     resource_values, ARRAY_SIZE(resource_values));
-            ALOGI("Video Encode hint start");
+            ALOGV("Video Encode hint start");
             return HINT_HANDLED;
         }
     } else if (video_encode_metadata.state == 0) {
@@ -245,7 +251,7 @@ static int process_video_encode_hint(void *metadata)
             ((strncmp(governor, SCHED_GOVERNOR, strlen(SCHED_GOVERNOR)) == 0) &&
                 (strlen(governor) == strlen(SCHED_GOVERNOR)))) {
             undo_hint_action(video_encode_metadata.hint_id);
-            ALOGI("Video Encode hint stop");
+            ALOGV("Video Encode hint stop");
             return HINT_HANDLED;
         }
     }
@@ -254,31 +260,39 @@ static int process_video_encode_hint(void *metadata)
 
 static int process_activity_launch_hint(void *data)
 {
-    // boost will timeout in 1.5s
-    int duration = 1500;
+    // boost will timeout in 2s
+    int duration = 2000;
+    ATRACE_BEGIN("launch");
     if (sustained_performance_mode || vr_mode) {
+        ATRACE_END();
         return HINT_HANDLED;
     }
 
-    ALOGV("LAUNCH HINT: %s", data ? "ON" : "OFF");
+    ALOGV("LAUNCH HINT: %s %d", data ? "ON" : "OFF", duration);
     if (data && launch_mode == 0) {
         launch_handle = process_boost(launch_handle, duration);
         if (launch_handle > 0) {
             launch_mode = 1;
             ALOGV("Activity launch hint handled");
+            ATRACE_INT("launch_lock", 1);
+            ATRACE_END();
             return HINT_HANDLED;
         } else {
+            ATRACE_END();
             return HINT_NONE;
         }
     } else if (data == NULL  && launch_mode == 1) {
         release_request(launch_handle);
+        ATRACE_INT("launch_lock", 0);
         launch_mode = 0;
+        ATRACE_END();
         return HINT_HANDLED;
     }
+    ATRACE_END();
     return HINT_NONE;
 }
 
-int power_hint_override(struct power_module *module, power_hint_t hint, void *data)
+int power_hint_override(power_hint_t hint, void *data)
 {
     static struct timespec s_previous_boost_timespec;
     struct timespec cur_boost_timespec;
@@ -372,7 +386,7 @@ int power_hint_override(struct power_module *module, power_hint_t hint, void *da
     return HINT_NONE;
 }
 
-int set_interactive_override(__unused struct power_module *module, int on)
+int set_interactive_override(int on)
 {
     return HINT_HANDLED; /* Don't excecute this code path, not in use */
     char governor[80];
@@ -392,7 +406,7 @@ int set_interactive_override(__unused struct power_module *module, int on)
                 perform_hint_action(DISPLAY_STATE_HINT_ID,
                 resource_values, ARRAY_SIZE(resource_values));
                 display_hint_sent = 1;
-                ALOGI("Display Off hint start");
+                ALOGV("Display Off hint start");
                 return HINT_HANDLED;
             }
         }
@@ -402,7 +416,7 @@ int set_interactive_override(__unused struct power_module *module, int on)
             (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
             undo_hint_action(DISPLAY_STATE_HINT_ID);
             display_hint_sent = 0;
-            ALOGI("Display Off hint stop");
+            ALOGV("Display Off hint stop");
             return HINT_HANDLED;
         }
     }
