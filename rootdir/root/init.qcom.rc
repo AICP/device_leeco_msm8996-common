@@ -328,6 +328,7 @@ on post-fs-data
     mkdir /tombstones/dsps 0771 system system
     mkdir /persist/data/sfs 0700 system system
     mkdir /persist/data/tz 0700 system system
+    mkdir /persist/qti_fp 0700 system system
     mkdir /persist/qc_senseid 0700 system system
     mkdir /data/misc/dts 0770 media audio
     mkdir /data/usf 0700 system system
@@ -545,12 +546,22 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     group camera system inet input graphics
     writepid /dev/cpuset/system-background/tasks
 
-# fingerprint service
+#fingerprint service
 service fingerprintd /system/bin/fingerprintd
     class late_start
     user system
     group system
     writepid /dev/cpuset/system-background/tasks
+
+service qfp-daemon /system/bin/qfp-daemon
+    class late_start
+    user system
+    group system drmrpc diag input
+
+service fps_hal /system/vendor/bin/fingerprint.qcom
+    class late_start
+    user system
+    group system input
 
 # start up peripheral manager
 service per_mgr /vendor/bin/pm-service
