@@ -58,3 +58,6 @@ enum {
     PROFILE_BIAS_POWER,
     PROFILE_BIAS_PERFORMANCE
 };
+
+#define UNUSED(x) UNUSED_ ## x __attribute__((__unused__))
+
