@@ -1,17 +1,4 @@
-allow audioserver persist_file:file { getattr open read };
+# Callbacks in response to rild IPC into audioserver
+binder_call(audioserver, rild)
 
-set_prop(audioserver, diag_prop);
-allow audioserver rootfs:lnk_file getattr;
-
-allow audioserver persist_file:dir search;
-
-allow audioserver smartamp_device:chr_file rw_file_perms;
-
-allow audioserver perfd:unix_stream_socket connectto;
-allow audioserver mpctl_data_file:dir search;
-allow audioserver system_data_file:sock_file write;
-
-allow audioserver eas_sched:dir { r_dir_perms };
-allow audioserver eas_sched:file { rw_file_perms };
-
-allow audioserver diag_device:chr_file { rw_file_perms };
+binder_call(audioserver, bootanim)
