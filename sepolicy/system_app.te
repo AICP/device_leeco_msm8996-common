@@ -1,19 +1,10 @@
-allow system_app proc_touchpanel:dir search;
-allow system_app sysfs_vibrator:file rw_file_perms;
-allow system_app sysfs_vibrator:dir search;
-allow system_app sysfs_graphics:file rw_file_perms;
-allow system_app sysfs_graphics:dir search;
+# Read ro.boot.hardware.sku. Needed by Regulatory Info screen of Settings app.
+# Normally this property is a default_prop which is readable by anybody, but on marlin/sailfish
+# init_mid needs to be able to set this property and thus this property had to be relabelled as
+# a new type, hw_sku_pop. This in turn requires us to grant system_app read access to this property
+# label.
+get_prop(system_app, hw_sku_prop);
 
-allow system_app proc_touchpanel:dir search;
-allow system_app proc_touchpanel:file rw_file_perms;
-
-allow system_app sysfs_fpc_proximity:file rw_file_perms;
-
-allow system_app fidoca:binder call;
-allow system_app fingerprintd:binder call;
-allow system_app goodix:binder call;
-
-allow system_app media_rw_data_file:dir getattr;
-
-allow system_app kcal_dev:file rw_file_perms;
-allow system_app kcal_dev:dir search;
+# Needed by Settings app's TelephonyMonitorPreferenceController, available only on a subset of
+# userdebug and eng devices
+userdebug_or_eng(`set_prop(system_app, radio_prop)')
