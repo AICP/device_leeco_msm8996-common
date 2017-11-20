@@ -1,25 +1,15 @@
-allow init vfat:file { read open };
-allow init socket_device:sock_file { create setattr unlink };
-allow init sysfs:dir rw_file_perms;
-allow init sysfs:file rw_file_perms;
-allow init input_device:chr_file r_file_perms;
+# symlink /sdcard to backing block
+allow init tmpfs:lnk_file create;
 
-allow init debugfs:dir mounton;
-allow init debugfs:file write;
-allow init property_socket:sock_file write;
+# Run "ifup lo" to bring up the localhost interface
+allowxperm init self:udp_socket ioctl { SIOCSIFFLAGS };
 
-allow init proc:lnk_file setattr;
+allow init proc_kernel_sched:file w_file_perms;
+allow init sysfs_type:lnk_file read;
 
-allow init wifi_mac_exec:file getattr;
-allow init proc_kernel_sched:file rw_file_perms;
-allow init proc_dirty_ratio:file write;
+allow init firmware_file:dir mounton;
+allow init persist_file:dir mounton;
+allow init userdata_block_device:blk_file { write };
 
-allow init debugfs:file { rw_file_perms };
-
-allow init eas_sched:dir { rw_file_perms };
-allow init eas_sched:file { create setattr rw_file_perms };
-
-allow init eas_sched:dir mounton;
-
-allow init consumer_ir_device:file relabelto;
-
+allow init debugfs_sps:dir search;
+allow init debugfs_sps:file w_file_perms;
