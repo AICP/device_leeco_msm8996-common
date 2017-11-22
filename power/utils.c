@@ -26,7 +26,7 @@
  * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-#define LOG_NIDEBUG 0
+#define LOG_NDEBUG 1
 
 #include <dlfcn.h>
 #include <fcntl.h>
@@ -43,7 +43,9 @@
 #define LOG_TAG "QCOM PowerHAL"
 #include <utils/Log.h>
 
+#ifndef INTERACTION_BOOST
 #define INTERACTION_BOOST
+#endif
 
 char scaling_gov_path[4][80] ={
     "sys/devices/system/cpu/cpu0/cpufreq/scaling_governor",
@@ -206,14 +208,14 @@ void interaction(int duration, int num_args, int opt_list[])
 #ifdef INTERACTION_BOOST
     static int lock_handle = 0;
 
-    if (duration < 0 || num_args < 1 || opt_list[0] == NULL)
+    if (duration < 0 || num_args < 1 || opt_list[0] == 0)
         return;
 
     if (qcopt_handle) {
         if (perf_lock_acq) {
             lock_handle = perf_lock_acq(lock_handle, duration, opt_list, num_args);
             if (lock_handle == -1)
-                ALOGV("Failed to acquire lock.");
+                ALOGE("Failed to acquire lock.");
         }
     }
 #endif
@@ -222,14 +224,14 @@ void interaction(int duration, int num_args, int opt_list[])
 int interaction_with_handle(int lock_handle, int duration, int num_args, int opt_list[]) 
 {
 #ifdef INTERACTION_BOOST
-    if (duration < 0 || num_args < 1 || opt_list[0] == NULL)
+    if (duration < 0 || num_args < 1 || opt_list[0] == 0)
         return 0;
 
     if (qcopt_handle) {
         if (perf_lock_acq) {
             lock_handle = perf_lock_acq(lock_handle, duration, opt_list, num_args);
             if (lock_handle == -1)
-                ALOGV("Failed to acquire lock.");
+                ALOGE("Failed to acquire lock.");
         }
     }
     return lock_handle;
@@ -260,7 +262,7 @@ void perform_hint_action(int hint_id, int resource_values[], int num_resources)
                     num_resources);
 
             if (lock_handle == -1) {
-                ALOGV("Failed to acquire lock.");
+                ALOGE("Failed to acquire lock.");
             } else {
                 /* Add this handle to our internal hint-list. */
                 struct hint_data *new_hint =

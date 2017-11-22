@@ -47,7 +47,7 @@ const int CPU_SENSORS[] = {4, 6, 9, 11};
 //qcom,freq-mitigation-temp
 #define CPU_THROTTLING_THRESHOLD      95
 #define BATTERY_SHUTDOWN_THRESHOLD    60
-// device/leeco/msm8996-common/configs/thermal-engine.conf
+// device/google/marlin/thermal-engine-marlin.conf
 #define SKIN_THROTTLING_THRESHOLD     47
 #define SKIN_SHUTDOWN_THRESHOLD       60
 #define VR_THROTTLED_BELOW_MIN        58
@@ -272,7 +272,7 @@ thermal_module_t HAL_MODULE_INFO_SYM = {
         .module_api_version = THERMAL_HARDWARE_MODULE_API_VERSION_0_1,
         .hal_api_version = HARDWARE_HAL_API_VERSION,
         .id = THERMAL_HARDWARE_MODULE_ID,
-        .name = "leeco Thermal HAL",
+        .name = "Marlin / Sailfish Thermal HAL",
         .author = "The Android Open Source Project",
         .methods = &thermal_module_methods,
     },
