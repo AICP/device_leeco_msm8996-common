@@ -164,10 +164,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/FOSSConfig.xml:system/etc/FOSSConfig.xml
 
-# Display calibration
-PRODUCT_PACKAGES += \
-    libjni_livedisplay
-
 # Doze mode
 #PRODUCT_PACKAGES += \
 #    Doze
@@ -232,8 +228,8 @@ PRODUCT_PACKAGES += \
     lights.msm8996
 
 # LiveDisplay native
-PRODUCT_PACKAGES += \
-    libjni_livedisplay
+#PRODUCT_PACKAGES += \
+#    libjni_livedisplay
 
 # Media
 PRODUCT_COPY_FILES += \
