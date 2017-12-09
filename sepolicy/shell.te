@@ -1,4 +1,0 @@
-allow shell ctl_default_prop:property_service set;
-
-allow shell proc_iomem:file getattr;
-allow shell proc_sysrq:file getattr;
