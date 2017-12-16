@@ -61,6 +61,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
+    persist.bt.enableAptXHD=true \
     bt.max.hfpclient.connections=1 \
     qcom.bluetooth.soc=rome \
     ro.bluetooth.wipower=true \
