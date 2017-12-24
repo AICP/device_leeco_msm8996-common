@@ -97,39 +97,39 @@ void init_alarm_boot_properties()
          * 8 -> KPDPWR_N pin toggled (power key pressed)
          */
         if (buf[0] == '0') {
-            android::init::property_set("ro.boot.bootreason", "invalid");
-            android::init::property_set("ro.alarm_boot", "false");
+            property_set("ro.boot.bootreason", "invalid");
+            property_set("ro.alarm_boot", "false");
         }
         else if (buf[0] == '1') {
-            android::init::property_set("ro.boot.bootreason", "hard_reset");
-            android::init::property_set("ro.alarm_boot", "false");
+            property_set("ro.boot.bootreason", "hard_reset");
+            property_set("ro.alarm_boot", "false");
         }
         else if (buf[0] == '2') {
-            android::init::property_set("ro.boot.bootreason", "smpl");
-            android::init::property_set("ro.alarm_boot", "false");
+            property_set("ro.boot.bootreason", "smpl");
+            property_set("ro.alarm_boot", "false");
         }
         else if (buf[0] == '3'){
-            android::init::property_set("ro.alarm_boot", "true");
+            property_set("ro.alarm_boot", "true");
         }
         else if (buf[0] == '4') {
-            android::init::property_set("ro.boot.bootreason", "dc_chg");
-            android::init::property_set("ro.alarm_boot", "false");
+            property_set("ro.boot.bootreason", "dc_chg");
+            property_set("ro.alarm_boot", "false");
         }
         else if (buf[0] == '5') {
-            android::init::property_set("ro.boot.bootreason", "usb_chg");
-            android::init::property_set("ro.alarm_boot", "false");
+            property_set("ro.boot.bootreason", "usb_chg");
+            property_set("ro.alarm_boot", "false");
         }
         else if (buf[0] == '6') {
-            android::init::property_set("ro.boot.bootreason", "pon1");
-            android::init::property_set("ro.alarm_boot", "false");
+            property_set("ro.boot.bootreason", "pon1");
+            property_set("ro.alarm_boot", "false");
         }
         else if (buf[0] == '7') {
-            android::init::property_set("ro.boot.bootreason", "cblpwr");
-            android::init::property_set("ro.alarm_boot", "false");
+            property_set("ro.boot.bootreason", "cblpwr");
+            property_set("ro.alarm_boot", "false");
         }
         else if (buf[0] == '8') {
-            android::init::property_set("ro.boot.bootreason", "kpdpwr");
-            android::init::property_set("ro.alarm_boot", "false");
+            property_set("ro.boot.bootreason", "kpdpwr");
+            property_set("ro.alarm_boot", "false");
         }
     }
 }
@@ -167,36 +167,36 @@ void vendor_load_properties() {
         // This is LEX720
         property_override("ro.product.model", "LEX720");
         // Dual SIM
-        android::init::property_set("persist.radio.multisim.config", "dsds");
+        property_set("persist.radio.multisim.config", "dsds");
     }
     else if (isLEX722)
     {
         // This is LEX722
         property_override("ro.product.model", "LEX722");
-        android::init::property_set("persist.data.iwlan.enable", "false");
+        property_set("persist.data.iwlan.enable", "false");
         // Dual SIM
-        android::init::property_set("persist.radio.multisim.config", "dsds");
+        property_set("persist.radio.multisim.config", "dsds");
     }
     else if (isLEX727)
     {
         // This is LEX727
         property_override("ro.product.model", "LEX727");
         // Single SIM
-        android::init::property_set("persist.radio.multisim.config", "NA");
+        property_set("persist.radio.multisim.config", "NA");
     }
     else if (isLEX820)
     {
         // This is LEX820
         property_override("ro.product.model", "LEX820");
         // Dual SIM
-        android::init::property_set("persist.radio.multisim.config", "dsds");
+        property_set("persist.radio.multisim.config", "dsds");
     }
     else if (isLEX829)
     {
         // This is LEX829
-        android::init::property_set("ro.product.model", "LEX829");
+        property_override("ro.product.model", "LEX829");
         // Dual SIM
-        android::init::property_set("persist.radio.multisim.config", "dsds");
+        property_set("persist.radio.multisim.config", "dsds");
     }
     else
     {
