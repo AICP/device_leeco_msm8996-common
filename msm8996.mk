@@ -95,7 +95,6 @@ PRODUCT_PACKAGES += \
     libqcomvoiceprocessing \
     libvolumelistener \
     tinymix
-#    android.hardware.soundtrigger@2.0-impl \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/aanc_tuning_mixer.txt:$(TARGET_COPY_OUT_VENDOR)/etc/aanc_tuning_mixer.txt \
@@ -133,9 +132,9 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     camera.msm8996 \
     libshims_camera \
+    libshims_camera_client \
     libshims_qcamera-daemon \
     Camera2
-#    vendor.qti.hardware.camera.device@1.0 \
 
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
