@@ -298,7 +298,7 @@ lib64/libqti_performance.so
 lib64/libqti-perfd-client_system.so
 lib64/vendor.qti.hardware.perf@1.0.so
 vendor/bin/energy-awareness
-vendor/bin/msm_irqbalance
+bin/msm_irqbalance
 vendor/bin/hw/vendor.qti.hardware.perf@1.0-service
 vendor/etc/init/vendor.qti.hardware.perf@1.0-service.rc
 vendor/lib/libperfgluelayer.so
@@ -468,8 +468,7 @@ vendor/lib64/sensors.oem.so
 vendor/lib64/sensors.ssc.so
 
 # Thermal
-etc/thermal-engine.conf
-vendor/bin/thermal-engine
+bin/thermal-engine
 -vendor/lib/libthermalclient.so
 -vendor/lib64/libthermalclient.so
 vendor/lib64/libthermalioctl.so
@@ -499,3 +498,32 @@ vendor/firmware/widevine.mdt
 # Wifi
 bin/cnss-daemon
 bin/cnss_diag
+
+# Additions
+bin/energy-awareness
+etc/permissions/com.google.widevine.software.drm.xml
+vendor/bin/hw/android.hardware.drm@1.0-service.widevine
+vendor/etc/init/android.hardware.drm@1.0-service.widevine.rc
+vendor/lib/libdrm.so
+vendor/lib/libdrmfs.so
+vendor/lib/libdrmtime.so
+vendor/lib/libdrmutils.so
+vendor/lib/libwvhidl.so
+vendor/lib64/libdrm.so
+vendor/lib64/libdrmutils.so
+-priv-app/HotwordEnrollment/HotwordEnrollment.apk
+bin/iop
+vendor/bin/perfd
+vendor/etc/perf-profile0.conf
+vendor/etc/perf-profile1.conf
+vendor/etc/perf-profile2.conf
+vendor/etc/perf-profile3.conf
+vendor/etc/perf-profile4.conf
+vendor/etc/perf-profile5.conf
+vendor/etc/perf-profile6.conf
+vendor/lib/libqti-iop-client.so
+vendor/lib/libqti-iop.so
+vendor/lib/libqti-perfd-client.so
+vendor/lib64/libqti-iop-client.so
+vendor/lib64/libqti-iop.so
+vendor/lib64/libqti-perfd-client.so
