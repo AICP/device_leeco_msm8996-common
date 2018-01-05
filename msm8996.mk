@@ -172,6 +172,10 @@ PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
     android.hidl.manager@1.0-java
 
+# Display calibration
+PRODUCT_PACKAGES += \
+    libjni_livedisplay
+
 # Doze mode
 PRODUCT_PACKAGES += \
     Doze
@@ -236,8 +240,8 @@ PRODUCT_PACKAGES += \
     lights.msm8996
 
 # LiveDisplay native
-#PRODUCT_PACKAGES += \
-#    libjni_livedisplay
+PRODUCT_PACKAGES += \
+    libjni_livedisplay
 
 # Media
 PRODUCT_COPY_FILES += \
