@@ -129,7 +129,7 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.4-impl \
+    android.hardware.camera.provider@2.4-impl-custom \
     camera.msm8996 \
     libshims_camera \
     libshims_qcamera-daemon \
