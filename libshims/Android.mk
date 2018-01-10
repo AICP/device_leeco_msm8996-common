@@ -16,7 +16,7 @@
 LOCAL_PATH := $(call my-dir)
 
 
-# libcamera_shim
+#libcamera_shim
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := camera_shim.cpp
