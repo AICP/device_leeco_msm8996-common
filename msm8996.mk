@@ -351,7 +351,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini
 
 # Set default USB interface
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
 
 $(call inherit-product, vendor/leeco/msm8996-common/msm8996-common-vendor.mk)
