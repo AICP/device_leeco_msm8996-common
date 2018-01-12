@@ -1,6 +1,4 @@
-on init
-    # Bring up CPUs
-    trigger init-cpus
+on boot
 
     # Ensure all cpu's are online
     write /sys/devices/system/cpu/cpu0/online 1
@@ -8,19 +6,15 @@ on init
     write /sys/devices/system/cpu/cpu2/online 1
     write /sys/devices/system/cpu/cpu3/online 1
 
-    # Set permissions by node reads by dumpstate
-    chmod 0644 /sys/devices/system/cpu/present
-    chmod 0644 /sys/devices/system/cpu/online
-
-    # Update cpusets now that CPUs are up
+    # Update foreground and background cpusets
     write /dev/cpuset/foreground/cpus 0-3
     write /dev/cpuset/foreground/boost/cpus 0-3
     write /dev/cpuset/background/cpus 0-3
     write /dev/cpuset/system-background/cpus 0-3
     write /dev/cpuset/top-app/cpus 0-3
 
-on boot
-    # Add a cpuset for the camera daemon (we want all cores for camera)
+    # add a cpuset for the camera daemon
+    # we want all cores for camera
     mkdir /dev/cpuset/camera-daemon
     write /dev/cpuset/camera-daemon/cpus 0-3
     write /dev/cpuset/camera-daemon/mems 0
@@ -28,29 +22,12 @@ on boot
     chown system system /dev/cpuset/camera-daemon/tasks
     chmod 0664 /dev/cpuset/camera-daemon/tasks
 
-    # EAS: Set default schedTune value for foreground/top-app (only affects EAS)
-    write /dev/stune/foreground/schedtune.prefer_idle 1
-    write /dev/stune/top-app/schedtune.boost 10
-    write /dev/stune/top-app/schedtune.prefer_idle 1
-
-    # HMP: Enable sched boost (no effect on EAS)
+on init-cpus
+    # Enable sched boost
     write /proc/sys/kernel/sched_boost 1
 
 on enable-low-power
 
-    # Enable Adaptive LMK
-    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
-    write /sys/module/lowmemorykiller/parameters/adj "0,58,176,294,411,1000"
-    write /sys/module/lowmemorykiller/parameters/minfree "19352,29028,58056,135464,145140"
-    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 159375
-
-    # Enable all LPMs (this will enable C4, D4, D3, E4 and M3 LPMs)
-    write /sys/module/lpm_levels/parameters/sleep_disabled "N"
-
-    # Set GPU idle frequency to 133 MHz
-    write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 7
-
-on init-cpus
     # Disable thermal bcl hotplug to switch governor
     write /sys/module/msm_thermal/core_control/enabled 0
     write /sys/devices/soc/soc:qcom,bcl/mode "disable"
@@ -58,11 +35,11 @@ on init-cpus
     write /sys/devices/soc/soc:qcom,bcl/hotplug_soc_mask 0
     write /sys/devices/soc/soc:qcom,bcl/mode "enable"
 
-    # Bring back main cores CPU 0,2
-    write /sys/devices/system/cpu/cpu0/online 1
-    write /sys/devices/system/cpu/cpu2/online 1
+    # Enable Adaptive LMK
+    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
+    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 81250
 
-     # Configure governor settings for little cluster
+    # Configure governor settings for little cluster
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_duration 0
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_sched_load 1
@@ -76,11 +53,11 @@ on init-cpus
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 19000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 79000
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 307200
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/ignore_hispeed_on_notif 0
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/ignore_hispeed_on_notif 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/enable_prediction 1
 
-    # EAS: Cap the max frequency of silver core to 1.6 GHz
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1593600
+    # Online CPU2
+    write /sys/devices/system/cpu/cpu2/online 1
 
      # Configure governor settings for big cluster
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "interactive"
@@ -96,7 +73,7 @@ on init-cpus
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 19000
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/max_freq_hysteresis 79000
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 307200
-    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/ignore_hispeed_on_notif 0
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/ignore_hispeed_on_notif 1
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/enable_prediction 1
 
     # Switch to bioshock
@@ -104,16 +81,6 @@ on init-cpus
    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "bioshock"
    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "bioshock"
    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor "bioshock"
-
-    # EAS: Switch to schedutil governor (no effect if not EAS)
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "schedutil"
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "schedutil"
-
-    # EAS: Adjust schedutil settings
-    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us 500
-    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us 3000
-    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us 500
-    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us 4000
 
     # Re-enable thermal and BCL hotplug
     write /sys/module/msm_thermal/core_control/enabled 1
@@ -130,11 +97,10 @@ on init-cpus
     # Disable touch boost
     write /sys/module/msm_performance/parameters/touchboost 0
 
-    # HMP: Set big.LITTLE scheduler parameters (no effect on EAS)
+    # Setting b.L scheduler parameters
     write /proc/sys/kernel/sched_boost 0
-    write /proc/sys/kernel/sched_migration_fixup 1
-    write /proc/sys/kernel/sched_upmigrate 95
     write /proc/sys/kernel/sched_downmigrate 90
+    write /proc/sys/kernel/sched_upmigrate 95
     write /proc/sys/kernel/sched_freq_inc_notify 400000
     write /proc/sys/kernel/sched_freq_dec_notify 400000
     write /proc/sys/kernel/sched_spill_nr_run 3
@@ -162,8 +128,13 @@ on init-cpus
     write /sys/class/devfreq/soc:qcom,memlat-cpu2/polling_interval 10
     write /sys/class/devfreq/soc:qcom,mincpubw/governor "cpufreq"
 
-on class_start:late_start
-    trigger enable-low-power
+    write /sys/module/lpm_levels/parameters/sleep_disabled "N"
+
+    # Set idle GPU to 133 Mhz
+    write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 7
+
+    # Set perfd properties
+    setprop sys.post_boot.parsed 1
 
     # Starting io prefetcher service
     start iop
@@ -176,19 +147,27 @@ on charger
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "powersave"
     write /sys/module/lpm_levels/parameters/sleep_disabled 0
 
+on class_start:late_start
+    trigger enable-low-power
+
+on property:init.svc.recovery=running
+    trigger enable-low-power
+
 on property:dev.bootcomplete=1
     setprop sys.io.scheduler "maple"
 
     # Update cpusets now that boot is complete and we want better load balancing
     write /dev/cpuset/top-app/cpus 0-3
-    write /dev/cpuset/foreground/boost/cpus 0-1
+    write /dev/cpuset/foreground/boost/cpus 0-2
     write /dev/cpuset/foreground/cpus 0-2
     write /dev/cpuset/background/cpus 0-1
     write /dev/cpuset/system-background/cpus 0-1
 
-    # Set permissions for dumpstate nodes
-    chmod 0644 /d/rpm_stats
-    chmod 0644 /d/dpm_master_stats
+    # Enable Adaptive LMK
+    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
+    write /sys/module/lowmemorykiller/parameters/adj "0,58,176,294,411,1000"
+    write /sys/module/lowmemorykiller/parameters/minfree "19352,29028,58056,135464,145140"
+    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 159375
 
 # Kernel tuning
     write /sys/module/msm_thermal/core_control/enabled 0
@@ -206,6 +185,3 @@ on property:dev.bootcomplete=1
     swapon /dev/block/zram0 > /dev/null 2>&1
     swapoff /dev/block/zram0 > /dev/null 2>&1
     write /sys/block/zram0/reset 1
-
-on property:init.svc.recovery=running
-    trigger enable-low-power
