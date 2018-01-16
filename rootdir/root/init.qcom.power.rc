@@ -169,16 +169,10 @@ on property:dev.bootcomplete=1
     write /sys/kernel/mm/ksm/run 0
 
 # VM
-    write /proc/sys/vm/dirty_ratio 95
-    write /proc/sys/vm/dirty_background_ratio 85
-    write /proc/sys/vm/dirty_expire_centisecs 10
+    write /proc/sys/vm/dirty_background_ratio 20
+    write /proc/sys/vm/dirty_expire_centisecs 100
     write /proc/sys/vm/swappiness 5
-    write /proc/sys/vm/vfs_cache_pressure 5
-    write /sys/block/zram0/disksize 283115520
-    mkswap /dev/block/zram0 > /dev/null 2>&1
-    swapon /dev/block/zram0 > /dev/null 2>&1
-    swapoff /dev/block/zram0 > /dev/null 2>&1
-    write /sys/block/zram0/reset 1
+    write /proc/sys/vm/vfs_cache_pressure 60
 
 on property:init.svc.recovery=running
     trigger enable-low-power
