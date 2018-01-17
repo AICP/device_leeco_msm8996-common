@@ -2086,8 +2086,10 @@ typedef enum {
     CAM_INTF_PARM_MANUAL_FOCUS_POS, /* 180 */
     /* Manual White balance gains */
     CAM_INTF_PARM_WB_MANUAL,
-    /* Offline Data Overwrite */
-    CAM_INTF_PARM_HW_DATA_OVERWRITE,
+    LEECO_RESERVED_PARAM_1,
+    LEECO_RESERVED_PARAM_2,
+    LEECO_RESERVED_PARAM_3,
+    LEECO_RESERVED_PARAM_4,
     /* IMG LIB reprocess debug section */
     CAM_INTF_META_IMGLIB, /* cam_intf_meta_imglib_t */
     /* OEM specific parameters */
@@ -2159,6 +2161,9 @@ typedef enum {
     CAM_INTF_PARM_INSTANT_AEC,
     /* Param for tracking previous reprocessing activity */
     CAM_INTF_META_REPROCESS_FLAGS,
+    /* Offline Data Overwrite */
+    CAM_INTF_PARM_HW_DATA_OVERWRITE, /* 226 */
+
     CAM_INTF_PARM_MAX
 } cam_intf_parm_type_t;
 
