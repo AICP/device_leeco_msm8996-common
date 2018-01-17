@@ -345,4 +345,6 @@
         <item>"/system/framework/arm64/boot-core-libart.oat"</item>
    </string-array>
 
+    <!-- Button backlight -->
+    <bool name="config_deviceHasVariableButtonBrightness">false</bool>
 </resources>
