@@ -893,9 +893,8 @@ service ril-daemon2 /vendor/bin/hw/rild -c 2
 
 service charger /charger
     class charger
-    group log
+    group system graphics
     seclabel u:r:charger:s0
-    writepid /dev/cpuset/system-background/tasks
 
 service ssr_diag /system/bin/ssr_diag
     class late_start
@@ -907,16 +906,6 @@ service charger_monitor /system/bin/charger_monitor
     user root
     group root
     disabled
-
-service qbcharger /charger -m 1
-    disabled
-    oneshot
-
-on property:sys.qbcharger.enable=true
-    start qbcharger
-
-on property:sys.qbcharger.enable=false
-    stop qbcharger
 
 service msm_irqbalance /system/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
     class main
