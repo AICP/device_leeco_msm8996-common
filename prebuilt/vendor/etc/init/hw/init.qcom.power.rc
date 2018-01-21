@@ -48,13 +48,12 @@ on charger
 
 on enable-low-power
     # Set GPU idle frequency to 133 MHz
-    write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 6
+    write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 7
 
     # Disable thermal hotplug to switch governor
     write /sys/module/msm_thermal/core_control/enabled 0
 
     # Enable Adaptive LMK
-    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
     write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 81250
 
     # Set sync wakee policy tunable
@@ -96,7 +95,7 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/enable_prediction 1
 
     # Re-enable thermal hotplug
-    write /sys/module/msm_thermal/core_control/enabled 1
+    write /sys/module/msm_thermal/parameters/enabled Y
 
     # Input boost configuration
     write /sys/module/cpu_boost/parameters/input_boost_freq "0:1324800 2:1324800"
@@ -146,9 +145,6 @@ on enable-low-power
 
 on property:sys.boot_completed=1
     trigger enable-low-power
-
-    # Set I/O squeduler
-    setprop sys.io.scheduler "bfq"
 
     # VM
     write /proc/sys/vm/dirty_background_ratio 20
