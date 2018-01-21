@@ -43,7 +43,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.audio.fluence.voicecall=true \
     persist.vendor.audio.fluence.voicerec=true \
     persist.vendor.audio.fluence.audiorec=false \
-    persist.vendor.audio.fluence.speaker=true \
+    persist.vendor.audio.fluence.speaker=flase \
     vendor.audio.offload.buffer.size.kb=64 \
     vendor.audio.offload.video=true \
     vendor.audio.offload.pcm.16bit.enable=true \
@@ -223,3 +223,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Fastcharge
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.le_fast_chrg_enable=1
+
+# Volte
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.radio.VT_HYBRID_ENABLE=1 \
+    persist.dbg.wfc_avail_ovr=1		
