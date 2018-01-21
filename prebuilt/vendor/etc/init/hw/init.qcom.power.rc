@@ -51,7 +51,6 @@ on enable-low-power
     write /sys/module/msm_thermal/core_control/enabled 0
 
     # Enable Adaptive LMK
-    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
     write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 81250
 
     # Set sync wakee policy tunable
@@ -93,11 +92,13 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/enable_prediction 1
 
     # Re-enable thermal hotplug
-    write /sys/module/msm_thermal/core_control/enabled 1
+    write /sys/module/msm_thermal/parameters/enabled Y
 
     # Input boost configuration
-    write /sys/module/cpu_boost/parameters/input_boost_freq "0:1324800 2:1324800"
-    write /sys/module/cpu_boost/parameters/input_boost_ms 40
+    write /sys/module/cpu_boost/parameters/input_boost_enabled 0
+
+    # Touch boost
+    write /sys/module/msm_performance/parameters/touchboost 0
 
     # Set big.LITTLE scheduler parameters
     write /proc/sys/kernel/sched_boost 0
@@ -143,9 +144,6 @@ on enable-low-power
 
 on property:sys.boot_completed=1
     trigger enable-low-power
-
-    # Set I/O squeduler
-    setprop sys.io.scheduler "bfq"
 
     # Start I/O prefetcher service
     start iop
