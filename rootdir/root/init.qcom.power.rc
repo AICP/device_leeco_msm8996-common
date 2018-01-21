@@ -25,7 +25,7 @@ on enable-low-power
     write /sys/module/lpm_levels/parameters/sleep_disabled "N"
 
     # Set GPU idle frequency to 133 MHz
-    write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 6
+    write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 7
 
 on init-cpus
     # Disable thermal bcl hotplug to switch governor
@@ -41,36 +41,46 @@ on init-cpus
 
     # Configure governor settings for LITTLE cluster
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_duration 0
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_sched_load 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_migration_notif 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay 19000
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 90
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay "40000 960000:50000 1228800:60000 1478400:70000"
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 101
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate 20000
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 960000
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 80
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 307200
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy 0
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "75 480000:80 556800:80 729600:85 960000:90 1036800:95 1228800:100"
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 19000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 79000
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 307200
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/ignore_hispeed_on_notif 0
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/enable_prediction 1
 
     # Avoid overheating, cap the max frequency of silver core to 1.6 GHz
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1593600
 
      # Configure governor settings for big cluster
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "interactive"
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/boostpulse_duration 0
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/use_sched_load 1
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/use_migration_notif 1
-    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/above_hispeed_delay "19000 1400000:39000 1700000:39000"
-    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load 90
-    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate 20000
-    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/hispeed_freq 1248000
-    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/io_is_busy 1
-    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "85 1500000:90 1800000:95"
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/above_hispeed_delay "40000 1036800:60000 1248000:70000 1478400:80000 1824000:90000"
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load 101
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate 30000
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/hispeed_freq 307200
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/io_is_busy 0
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "75 729600:80 940800:80 1036800:85 1401600:90 1824000:95 2150400:100"
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 19000
-    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/max_freq_hysteresis 39000
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/max_freq_hysteresis 79000
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 307200
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/ignore_hispeed_on_notif 0
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/enable_prediction 1
+
+    # Switch to bioshock
+   write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "bioshock"
+   write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "bioshock"
+   write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "bioshock"
+   write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor "bioshock"
 
     # Re-enable thermal and BCL hotplug
     write /sys/module/msm_thermal/core_control/enabled 1
@@ -79,9 +89,13 @@ on init-cpus
     write /sys/devices/soc/soc:qcom,bcl/hotplug_soc_mask 8
     write /sys/devices/soc/soc:qcom,bcl/mode "enable"
 
-    # Input boost configuration
-    write /sys/module/cpu_boost/parameters/input_boost_freq "0:1324800 2:1324800"
-    write /sys/module/cpu_boost/parameters/input_boost_ms 40
+    # Disable input boost
+    write /sys/module/cpu_boost/parameters/input_boost_enabled 0
+    write /sys/module/cpu_boost/parameters/input_boost_ms 0
+    write /sys/module/cpu_boost/parameters/input_boost_freq "0:0 1:0 2:0 3:0"
+
+    # Disable touch boost
+    write /sys/module/msm_performance/parameters/touchboost 0
 
     # Setting b.L scheduler parameters
     write /proc/sys/kernel/sched_boost 0
@@ -130,14 +144,19 @@ on charger
     write /sys/module/lpm_levels/parameters/sleep_disabled 0
 
 on property:dev.bootcomplete=1
-    setprop sys.io.scheduler "bfq"
+    setprop sys.io.scheduler "maple"
 
     # Update cpusets now that boot is complete and we want better load balancing
     write /dev/cpuset/top-app/cpus 0-3
     write /dev/cpuset/foreground/boost/cpus 0-2
     write /dev/cpuset/foreground/cpus 0-2
-    write /dev/cpuset/background/cpus 0
-    write /dev/cpuset/system-background/cpus 0-2
+    write /dev/cpuset/background/cpus 0-1
+    write /dev/cpuset/system-background/cpus 0-1
+
+# Kernel tuning
+    write /sys/module/msm_thermal/core_control/enabled 0
+    write /sys/module/msm_thermal/parameters/enabled Y
+    write /sys/kernel/mm/ksm/run 0
 
     # VM
     write /proc/sys/vm/dirty_background_ratio 20
