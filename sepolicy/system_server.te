@@ -6,4 +6,3 @@ get_prop(system_server, alarm_boot_prop)
 allow system_server persist_file:dir { write };
 
 allow system_server consumer_ir_device:chr_file { rw_file_perms };
-
