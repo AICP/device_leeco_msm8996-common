@@ -1,29 +1,14 @@
 allow init block_device:lnk_file { relabelfrom };
 
-allow init gpt_block_device:lnk_file { relabelto };
-allow init modem_efs_partition_device:lnk_file { relabelto };
-allow init mba_debug_dev:lnk_file { relabelto };
-allow init recovery_block_device:lnk_file { relabelto };
-allow init dip_device:lnk_file { relabelto };
-allow init rpmb_device:lnk_file { relabelto };
-allow init userdata_block_device:lnk_file { relabelto };
-allow init frp_block_device:lnk_file { relabelto };
-allow init misc_block_device:lnk_file { relabelto };
-allow init cache_block_device:lnk_file { relabelto };
-allow init persist_block_device:lnk_file { relabelto };
+allow init { gpt_block_device modem_efs_partition_device mba_debug_dev recovery_block_device dip_device rpmb_device userdata_block_device frp_block_device misc_block_device cache_block_device persist_block_device }:lnk_file { relabelto };
 
 allow init servicemanager:binder { call };
 
-allow init touchpanel_file:lnk_file { setattr };
-allow init proc:lnk_file { setattr };
+allow init { proc touchpanel_file }:lnk_file { setattr };
 
-#allow init firmware_file:dir { create setattr };
-#allow init bt_firmware_file:dir { create setattr };
+#allow init { bt_firmware_file firmware_file }:dir { create setattr };
 
 # Requied to load shim libs
-allow init cameraserver:process { noatsecure };
-allow init hal_camera:process { noatsecure };
-allow init mm-qcamerad:process { noatsecure };
+allow init { cameraserver hal_camera qcamerad }:process { noatsecure };
 
 allow init consumer_ir_device:file relabelto;
-
