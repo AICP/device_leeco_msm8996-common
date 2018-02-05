@@ -260,6 +260,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     LePref
 
+# LePref Files
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,device/leeco/msm8996-common/lepref/files,/system/etc)
+
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-impl \
