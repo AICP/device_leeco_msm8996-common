@@ -249,6 +249,10 @@ PRODUCT_PACKAGES += \
 # LePref settigs modules
 PRODUCT_PACKAGES += \
     LePref
+
+# LePref Files
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,device/leeco/msm8996-common/lepref/files,/system/etc)
 	
 # Lights
 PRODUCT_PACKAGES += \
