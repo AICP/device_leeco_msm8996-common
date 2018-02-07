@@ -513,6 +513,10 @@ vendor/lib64/sensors.hal.tof.so|eb19aa40617e50bd1efcc88cee9f5b0af34e7f11
 vendor/lib64/sensors.oem.so|08c12372d3331ee43cc0a3f48b88f21e45324f29
 vendor/lib64/sensors.ssc.so
 
+# Simalliance
+-framework/org.simalliance.openmobileapi.jar
+-priv-app/SmartcardService/SmartcardService.apk
+
 # Thermal
 vendor/etc/thermal-engine.conf
 vendor/bin/thermal-engine
