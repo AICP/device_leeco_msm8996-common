@@ -335,6 +335,12 @@ vendor/lib64/vendor.qti.hardware.qdutils_disp@1.0_vendor.so|ede5278f1774fe1ea9eb
 vendor/lib/hw/vulkan.msm8996.so
 vendor/lib64/hw/vulkan.msm8996.so
 
+# IR
+-app/LetvRemoteControl/LetvRemoteControl.apk
+-app/UEIQuicksetSDKLeTV/UEIQuicksetSDKLeTV.apk
+etc/UEISettings
+etc/init.uei.sh
+
 # Keystore
 vendor/lib/hw/keystore.msm8996.so
 vendor/lib64/hw/keystore.msm8996.so
