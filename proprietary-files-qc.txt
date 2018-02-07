@@ -596,6 +596,27 @@ vendor/firmware/widevine.b06|b3edf85b2966de96911297a3b639911ffcdc3584
 vendor/firmware/widevine.mbn|5356712b2a84690c04a8826a953364204eec9ff6
 vendor/firmware/widevine.mdt|f2850975428d8e1cf4faa91398422a64ef207825
 
+etc/permissions/com.google.widevine.software.drm.xml
+lib/android.hardware.drm@1.0.so
+lib/drm/libfwdlockengine.so
+lib/libdrmframework.so
+lib/libdrmframework_jni.so
+lib/libmediadrm.so
+lib64/android.hardware.drm@1.0.so
+lib64/drm/libfwdlockengine.so
+lib64/libdrmframework.so
+lib64/libdrmframework_jni.so
+lib64/libmediadrm.so
+vendor/lib/libdrm.so
+vendor/lib/libdrmfs.so
+vendor/lib/libdrmtime.so
+vendor/lib/libdrmutils.so
+vendor/lib/mediadrm/libdrmclearkeyplugin.so
+vendor/lib64/libdrm.so
+vendor/lib64/libdrmutils.so
+vendor/lib64/mediadrm/libwvdrmengine.so
+
+
 # Wifi
 bin/cnss-daemon:vendor/bin/cnss-daemon
 vendor/bin/cnss_diag
