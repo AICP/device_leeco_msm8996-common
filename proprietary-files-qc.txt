@@ -164,9 +164,23 @@ vendor/lib64/com.qualcomm.qti.dpm.api@1.0_vendor.so
 vendor/lib64/libdpmqmihal.so
 
 # DRM
+lib/android.hardware.drm@1.0.so
+lib/drm/libfwdlockengine.so
+lib/libdrmframework.so
+lib/libdrmframework_jni.so
+lib/libmediadrm.so
+lib64/android.hardware.drm@1.0.so
+lib64/drm/libfwdlockengine.so
+lib64/libdrmframework.so
+lib64/libdrmframework_jni.so
+lib64/libmediadrm.so
 vendor/bin/qseecomd
 vendor/bin/qseeproxydaemon
 vendor/lib/libcppf.so
+vendor/lib/libdrm.so
+vendor/lib/libdrmfs.so
+vendor/lib/libdrmtime.so
+vendor/lib/libdrmutils.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/libtzdrmgenprov.so
 vendor/lib/qcdrm/playready/lib/drm/libdrmprplugin_customer.so
@@ -174,8 +188,10 @@ vendor/lib/qcdrm/playready/lib/libprdrmdecrypt_customer.so
 vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmdecrypt_customer.so
 vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmplugin_customer.so
 vendor/lib64/lib-sec-disp.so
+vendor/lib64/libdrm.so
 vendor/lib64/libdrmfs.so
 vendor/lib64/libdrmtime.so
+vendor/lib64/libdrmutils.so
 vendor/lib64/libGPreqcancel_svc.so
 vendor/lib64/libGPreqcancel.so
 vendor/lib64/libqisl.so
@@ -570,6 +586,7 @@ vendor/lib64/libtime_genoff.so
 vendor/lib64/libTimeService.so
 
 # Widevine
+etc/permissions/com.google.widevine.software.drm.xml
 framework/com.google.widevine.software.drm.jar
 vendor/etc/firmware/widevine.b00
 vendor/etc/firmware/widevine.b01
@@ -583,7 +600,9 @@ vendor/etc/firmware/widevine.mdt
 vendor/lib/libWVStreamControlAPI_L3.so
 vendor/lib/libwvdrm_L3.so
 vendor/lib/libwvm.so
+vendor/lib/mediadrm/libdrmclearkeyplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
+vendor/lib64/mediadrm/libwvdrmengine.so
 vendor/lib64/mediadrm/libdrmclearkeyplugin.so
 vendor/firmware/widevine.b00|e9613fee8d03b152dd66f667feb493775da995ca
 vendor/firmware/widevine.b01|fa1d61219139f3e8b00e3385270c8f947f13b183
