@@ -153,9 +153,14 @@ vendor/lib64/libdpmqmihal.so
 
 # DRM
 vendor/bin/qseecomd
+vendor/bin/qseeproxydaemon
 vendor/lib/libcppf.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/libtzdrmgenprov.so
+vendor/lib/qcdrm/playready/lib/drm/libdrmprplugin_customer.so
+vendor/lib/qcdrm/playready/lib/libprdrmdecrypt_customer.so
+vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmdecrypt_customer.so
+vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmplugin_customer.so
 vendor/lib64/lib-sec-disp.so
 vendor/lib64/libdrmfs.so
 vendor/lib64/libdrmtime.so
@@ -530,9 +535,21 @@ vendor/lib/libtime_genoff.so|e0773fb8eb0342889ae74be034357f1e12077e69
 vendor/lib64/libtime_genoff.so|7683a85cae9f17cd535e8960fceda1d6831074a0
 
 # Widevine
+framework/com.google.widevine.software.drm.jar
+vendor/etc/firmware/widevine.b00
+vendor/etc/firmware/widevine.b01
+vendor/etc/firmware/widevine.b02
+vendor/etc/firmware/widevine.b03
+vendor/etc/firmware/widevine.b04
+vendor/etc/firmware/widevine.b05
+vendor/etc/firmware/widevine.b06
+vendor/etc/firmware/widevine.mbn
+vendor/etc/firmware/widevine.mdt
 vendor/lib/libWVStreamControlAPI_L3.so
 vendor/lib/libwvdrm_L3.so
+vendor/lib/libwvm.so
 vendor/lib/mediadrm/libwvdrmengine.so
+vendor/lib64/mediadrm/libdrmclearkeyplugin.so
 vendor/firmware/widevine.b00|e9613fee8d03b152dd66f667feb493775da995ca
 vendor/firmware/widevine.b01|fa1d61219139f3e8b00e3385270c8f947f13b183
 vendor/firmware/widevine.b02|e0808c16f39c6871a145669b57261546b5332d41
