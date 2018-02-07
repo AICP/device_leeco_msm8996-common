@@ -515,7 +515,6 @@ vendor/lib64/sensors.ssc.so
 
 # Simalliance
 -framework/org.simalliance.openmobileapi.jar
--priv-app/SmartcardService/SmartcardService.apk
 
 # Thermal
 vendor/etc/thermal-engine.conf
