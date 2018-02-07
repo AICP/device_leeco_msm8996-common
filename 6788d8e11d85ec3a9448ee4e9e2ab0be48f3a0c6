@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e958f0d0_a1c22fca",
+        "filename": "msm8996.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 152
+      },
+      "writtenOn": "2018-02-07T14:43:08Z",
+      "side": 1,
+      "message": "Whitespaces",
+      "revId": "6788d8e11d85ec3a9448ee4e9e2ab0be48f3a0c6",
+      "serverId": "9f904cbb-a964-4fab-a7dc-5cfc4d5c238b",
+      "unresolved": false
+    }
+  ]
+}
