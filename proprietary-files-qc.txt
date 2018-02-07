@@ -375,6 +375,12 @@ vendor/lib64/lib-uceservice.so
 vendor/lib64/vendor.qti.imsrtpservice@1.0-service-Impl.so
 vendor/lib64/vendor.qti.imsrtpservice@1.0_vendor.so
 
+# IR
+-app/LetvRemoteControl/LetvRemoteControl.apk
+-app/UEIQuicksetSDKLeTV/UEIQuicksetSDKLeTV.apk
+etc/UEISettings
+etc/init.uei.sh
+
 # Keystore
 vendor/lib/hw/keystore.msm8996.so
 vendor/lib64/hw/keystore.msm8996.so
