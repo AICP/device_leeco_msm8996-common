@@ -10,11 +10,6 @@
    "branch":      "lineage-15.1"
  },
  {
-   "repository":  "LineageOS/android_external_stlport",
-   "target_path": "external/stlport",
-   "branch":      "staging/lineage-15.1"
- },
- {
    "repository":  "LineageOS/android_packages_resources_devicesettings",
    "target_path": "packages/resources/devicesettings",
    "branch":      "lineage-15.1"
