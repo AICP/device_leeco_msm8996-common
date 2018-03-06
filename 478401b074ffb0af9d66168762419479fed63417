@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e5b9518_f7faaeb4",
+        "filename": "overlay/frameworks/base/core/res/res/values/config.xml",
+        "patchSetId": 7
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2018-03-06T07:39:40Z",
+      "side": 1,
+      "message": "Moshe. Please clean white spaces.\nAll of them.",
+      "range": {
+        "startLine": 321,
+        "startChar": 42,
+        "endLine": 321,
+        "endChar": 45
+      },
+      "revId": "478401b074ffb0af9d66168762419479fed63417",
+      "serverId": "9f904cbb-a964-4fab-a7dc-5cfc4d5c238b",
+      "unresolved": false
+    }
+  ]
+}
