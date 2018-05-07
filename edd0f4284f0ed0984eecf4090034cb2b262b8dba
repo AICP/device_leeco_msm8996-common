@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "8a2b903a_34cace17",
+        "filename": "rootdir/root/init.qcom.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1343
+      },
+      "writtenOn": "2018-05-07T21:10:37Z",
+      "side": 1,
+      "message": "wakelock group added twice",
+      "revId": "edd0f4284f0ed0984eecf4090034cb2b262b8dba",
+      "serverId": "9f904cbb-a964-4fab-a7dc-5cfc4d5c238b",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d33a5f2_0ab8193f",
+        "filename": "rootdir/root/init.qcom.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1343
+      },
+      "writtenOn": "2018-05-07T21:10:37Z",
+      "side": 1,
+      "message": "wakelock group added twice",
+      "revId": "edd0f4284f0ed0984eecf4090034cb2b262b8dba",
+      "serverId": "9f904cbb-a964-4fab-a7dc-5cfc4d5c238b",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "966d12e5_d095ecd3",
         "filename": "rootdir/root/init.qcom.rc",
         "patchSetId": 3
