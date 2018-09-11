@@ -515,6 +515,7 @@ vendor/lib64/sensors.ssc.so
 
 # Simalliance
 -framework/org.simalliance.openmobileapi.jar
+-priv-app/SmartcardService/SmartcardService.apk
 
 # Thermal - Gemini 8.0.0/OPR1.170623.032/8.5.24
 vendor/bin/thermal-engine
