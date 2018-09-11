@@ -197,9 +197,6 @@ TARGET_RIL_VARIANT := caf
 # Sensors
 USE_SENSOR_MULTI_HAL := true
 
-# Smartcard service
-PRODUCT_BOOT_JARS += org.simalliance.openmobileapi
-
 # Timeservice
 BOARD_USES_QC_TIME_SERVICES := true
 
