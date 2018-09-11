@@ -4,6 +4,3 @@ allow init servicemanager:binder { call };
 
 allow init touchpanel_file:lnk_file { setattr };
 allow init proc:lnk_file { setattr };
-
-allow init consumer_ir_device:file relabelto;
-
