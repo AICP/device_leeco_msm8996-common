@@ -415,5 +415,5 @@
     <integer name="config_num_physical_slots">2</integer>
 
     <!-- Enable adjusting the button backlight -->
-    <bool name="config_deviceHasVariableButtonBrightness">true</bool>
+    <bool name="config_button_brightness_support">true</bool>
 </resources>
