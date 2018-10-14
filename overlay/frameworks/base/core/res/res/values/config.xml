@@ -414,6 +414,6 @@
          and one pSIM) -->
     <integer name="config_num_physical_slots">2</integer>
 
-    <!-- Enable adjusting the button backlight -->
-    <bool name="config_deviceHasVariableButtonBrightness">true</bool>
+    <!-- Whether or not swipe up gesture's opt-in setting is available on this device -->
+    <bool name="config_swipe_up_gesture_setting_available">true</bool>
 </resources>
