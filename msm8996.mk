@@ -20,8 +20,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_m.mk)
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay
 
 PRODUCT_ENFORCE_RRO_TARGETS := framework-res
 
@@ -137,7 +136,7 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service \
     camera.msm8996 \
-    Snap
+    SnapdragonCamera
 
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
@@ -244,10 +243,6 @@ PRODUCT_PACKAGES += \
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.leeco_8996
-
-# Lineage hardware
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.leeco_8996
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
@@ -362,10 +357,6 @@ PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-impl \
     android.hardware.thermal@1.0-service \
     thermal.msm8996
-
-# Trust HAL
-PRODUCT_PACKAGES += \
-    vendor.lineage.trust@1.0-service
 
 # USB
 PRODUCT_PACKAGES += \
