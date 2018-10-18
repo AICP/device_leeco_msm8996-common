@@ -327,3 +327,6 @@ firmware_directories /vendor/firmware_mnt/image/
 
 # DeviceInfo
 /dev/block/platform/soc/624000.ufshc/by-name/devinfo     0640   system     system
+
+# KCAL
+/sys/devices/platform/kcal_ctrl.0/* 0666 system system
