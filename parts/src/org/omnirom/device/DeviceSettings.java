@@ -47,23 +47,14 @@ public class DeviceSettings extends PreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
     private static final String KEY_CATEGORY_DISPLAY = "display";
-    public static final String S2S_KEY = "sweep2sleep";
-    public static final String KEY_VIBSTRENGTH = "vib_strength";
-    public static final String KEY_S2S_VIBSTRENGTH = "s2s_vib_strength";
-    public static final String FILE_S2S_TYPE = "/sys/sweep2sleep/sweep2sleep";
-    private static final String QC_SYSTEM_PROPERTY = "persist.sys.le_fast_chrg_enable";
     private static final String SYSTEM_PROPERTY_CAMERA_FOCUS_FIX = "persist.camera.focus_fix";
     private static final String SYSTEM_PROPERTY_VOLTE_FIX = "persist.volte.fix";
 
     final String KEY_DEVICE_DOZE = "device_doze";
     final String KEY_DEVICE_DOZE_PACKAGE_NAME = "org.lineageos.settings.doze";
 
-    private VibratorStrengthPreference mVibratorStrength;
 
-    private S2SVibratorStrengthPreference mVibratorStrengthS2S;
-    private ListPreference mS2S;
     private Preference mKcalPref;
-    private SwitchPreference mEnableQC;
     private SwitchPreference mCameraFocusFix;
     private SwitchPreference mVolteFix;
 
@@ -80,26 +71,6 @@ public class DeviceSettings extends PreferenceFragment implements
                 return true;
             }
         });
-
-        mS2S = (ListPreference) findPreference(S2S_KEY);
-        mS2S.setValue(Utils.getFileValue(FILE_S2S_TYPE, "0"));
-        mS2S.setOnPreferenceChangeListener(this);
-
-        mVibratorStrength = (VibratorStrengthPreference) findPreference(KEY_VIBSTRENGTH);
-        if (mVibratorStrength != null) {
-            mVibratorStrength.setEnabled(VibratorStrengthPreference.isSupported());
-        }
-
-        mVibratorStrengthS2S = (S2SVibratorStrengthPreference) findPreference(KEY_S2S_VIBSTRENGTH);
-        if (mVibratorStrengthS2S != null) {
-            mVibratorStrengthS2S.setEnabled(S2SVibratorStrengthPreference.isSupported());
-        }
-
-        mEnableQC = (SwitchPreference) findPreference(QC_SYSTEM_PROPERTY);
-        if( mEnableQC != null ) {
-            mEnableQC.setChecked(SystemProperties.getBoolean(QC_SYSTEM_PROPERTY, false));
-            mEnableQC.setOnPreferenceChangeListener(this);
-        }
 
         mCameraFocusFix = (SwitchPreference) findPreference(SYSTEM_PROPERTY_CAMERA_FOCUS_FIX);
         if( mCameraFocusFix != null ) {
@@ -129,18 +100,9 @@ public class DeviceSettings extends PreferenceFragment implements
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         final String key = preference.getKey();
         boolean value;
-        String strvalue;
-        if (S2S_KEY.equals(key)) {
-            strvalue = (String) newValue;
-            Utils.writeValue("/sys/sweep2sleep/sweep2sleep", strvalue);
-            SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
-            editor.putString(S2S_KEY, strvalue);
-            editor.commit();
-        } else {
-            value = (Boolean) newValue;
-            ((SwitchPreference)preference).setChecked(value);
-            setEnable(key,value);
-        }
+        value = (Boolean) newValue;
+        ((SwitchPreference)preference).setChecked(value);
+        setEnable(key,value);
         return true;
     }
 
