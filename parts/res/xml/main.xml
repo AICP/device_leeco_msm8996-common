@@ -14,12 +14,6 @@
      limitations under the License.
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory
-        android:title="@string/category_system">
-        <org.omnirom.device.VibratorStrengthPreference
-            android:key="vib_strength"
-            android:title="@string/vib_strength_title_head" />
-    </PreferenceCategory>
 
     <PreferenceCategory
         android:key="display"
@@ -49,7 +43,6 @@
             android:title="@string/camera_focus_fix_title"
             android:summary="@string/camera_focus_fix_summary" />
 
-
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -61,30 +54,6 @@
             android:title="@string/volte_fix_title"
             android:summary="@string/volte_fix_summary" />
 
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="batt"
-        android:title="@string/battery_settings_title" >
-
-        <SwitchPreference
-            android:key="persist.sys.le_fast_chrg_enable"
-            android:defaultValue="false"
-            android:title="@string/qc_title"
-            android:summary="@string/qc_summary" />
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:title="@string/s2s_title">
-        <ListPreference
-            android:title="@string/s2s_title"
-            android:key="sweep2sleep"
-            android:defaultValue="0"
-            android:entries="@array/s2sArray"
-            android:entryValues="@array/s2sValues" />
-         <org.omnirom.device.S2SVibratorStrengthPreference
-            android:key="s2s_vib_strength"
-            android:title="@string/s2s_vib_strength_title_head" />
     </PreferenceCategory>
 
 </PreferenceScreen>

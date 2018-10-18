@@ -16,17 +16,10 @@
 <resources>
     <string name="app_name">Le Extras</string>
     <string name="advanced_settings">Advanced</string>
-    <string name="category_system">System</string>
-    <string name="vib_strength_title_head">Vibration strength</string>
 
     <!-- Ambient display -->
     <string name="display_title">Display</string>
     <string name="device_doze_title">Ambient display</string>
-
-    <!-- Battery -->
-    <string name="battery_settings_title">Battery</string>
-    <string name="qc_title">Quick Charge</string>
-    <string name="qc_summary">Enable/disable quick charge settings</string>
 
     <!-- Camera -->
     <string name="camera_pref_title">Camera</string>
@@ -37,9 +30,6 @@
     <string name="volte_pref_title">VoLTE Hack</string>
     <string name="volte_fix_title">Enable VoLTE</string>
     <string name="volte_fix_summary">requires reboot,sim settings resets after every reboot</string>
-
-    <string name="s2s_title">Sweep to sleep</string>
-    <string name="s2s_vib_strength_title_head">Sweep2sleep vibration</string>
 
     <!-- Kcal -->
     <string name="kcal_title">Display color</string>
