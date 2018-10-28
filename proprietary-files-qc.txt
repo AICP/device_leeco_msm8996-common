@@ -409,10 +409,8 @@ vendor/lib64/vendor.qti.imsrtpservice@1.0-service-Impl.so
 vendor/lib64/vendor.qti.imsrtpservice@1.0_vendor.so
 
 # IR
--app/LetvRemoteControl/LetvRemoteControl.apk
+-app/LetvRemoteControl_preinstall/LetvRemoteControl_preinstall.apk
 -app/UEIQuicksetSDKLeTV/UEIQuicksetSDKLeTV.apk
-etc/UEISettings
-etc/init.uei.sh
 
 # Keystore - from CAF
 vendor/lib/hw/keystore.msm8996.so|bd92d1ccbc294e6bcb0fdb4018749646d1ba0193
