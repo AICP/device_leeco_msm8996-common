@@ -35,6 +35,9 @@ const static std::string kDeviceInfoPath = "/dev/block/platform/soc/624000.ufshc
 const static std::string kLcdBacklightPath = "/sys/class/leds/lcd-backlight/brightness";
 const static std::string kLcdMaxBacklightPath = "/sys/class/leds/lcd-backlight/max_brightness";
 
+const static std::string kWledBacklightPath = "/sys/class/leds/wled/brightness";
+const static std::string kWledMaxBacklightPath = "/sys/class/leds/wled/max_brightness";
+
 const static std::string kButton1BacklightPath = "/sys/class/leds/button-backlight/brightness";
 const static std::string kButton2BacklightPath = "/sys/class/leds/button-backlight1/brightness";
 const static std::string kButton3BacklightPath = "/sys/class/leds/button-backlight2/brightness";
@@ -64,6 +67,8 @@ const static std::string kRgbBlinkPath = "/sys/class/leds/rgb/rgb_blink";
 
 int main() {
     uint32_t lcdMaxBrightness = 255;
+    std::string lcdBacklightPath;
+    std::string lcdMaxBacklightPath;
     std::vector<std::ofstream> buttonBacklight;
     bool hasRGBlight = false;
 
@@ -79,28 +84,34 @@ int main() {
         std::string deviceInfo = deviceInfoBuf.str();
         if (deviceInfo.find("le_zl0") == 0) {
             LOG(WARNING) << "DeviceInfo: ZL0";
+            lcdBacklightPath = std::string(kLcdBacklightPath);
+            lcdMaxBacklightPath = std::string(kLcdMaxBacklightPath);
             hasRGBlight = true;
         } else if (deviceInfo.find("le_zl1") == 0) {
             LOG(WARNING) << "DeviceInfo: ZL1";
+            lcdBacklightPath = std::string(kLcdBacklightPath);
+            lcdMaxBacklightPath = std::string(kLcdMaxBacklightPath);
             hasRGBlight = true;
         } else if (deviceInfo.find("le_x2") == 0) {
             LOG(WARNING) << "DeviceInfo: X2";
+            lcdBacklightPath = std::string(kWledBacklightPath);
+            lcdMaxBacklightPath = std::string(kWledMaxBacklightPath);
         } else {
             LOG(ERROR) << "DeviceInfo: UNKNOWN";
             return 1;
         }
     }
 
-    std::ofstream lcdBacklight(kLcdBacklightPath);
+    std::ofstream lcdBacklight(lcdBacklightPath);
     if (!lcdBacklight) {
-        LOG(ERROR) << "Failed to open kLcdBacklightPath: " << kLcdBacklightPath << ", error=" << errno
+        LOG(ERROR) << "Failed to open lcdBacklightPath: " << lcdBacklightPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
         return -errno;
     }
 
-    std::ifstream lcdMaxBacklight(kLcdMaxBacklightPath);
+    std::ifstream lcdMaxBacklight(lcdMaxBacklightPath);
     if (!lcdMaxBacklight) {
-        LOG(ERROR) << "Failed to open kLcdMaxBacklightPath: " << kLcdMaxBacklightPath << ", error=" << errno
+        LOG(ERROR) << "Failed to open kLcdMaxBacklightPath: " << lcdMaxBacklightPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
         return -errno;
     } else {
