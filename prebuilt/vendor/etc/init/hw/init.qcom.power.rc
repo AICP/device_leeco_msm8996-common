@@ -41,7 +41,6 @@ on enable-low-power
     write /sys/module/msm_thermal/core_control/enabled 0
 
     # Enable Adaptive LMK
-    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
     write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 81250
 
     # Configure governor settings for little cluster
@@ -77,11 +76,11 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/enable_prediction 1
 
     # Re-enable thermal and BCL hotplug
-    write /sys/module/msm_thermal/core_control/enabled 1
+    write /sys/module/msm_thermal/parameters/enabled Y
 
     # Input boost configuration
     write /sys/module/cpu_boost/parameters/input_boost_freq "0:1324800 2:0"
-    write /sys/module/cpu_boost/parameters/input_boost_ms 80
+    write /sys/module/cpu_boost/parameters/input_boost_ms 40
 
     # Setting b.L scheduler parameters
     write /proc/sys/kernel/sched_boost 0
@@ -118,8 +117,6 @@ on enable-low-power
     write /sys/devices/soc/${ro.boot.bootdevice}/clkscale_enable 1
     write /sys/devices/soc/${ro.boot.bootdevice}/clkgate_enable 1
     write /sys/devices/soc/${ro.boot.bootdevice}/${ro.boot.bootdevice}:ufs_variant/pm_qos_enable 1
-
-    setprop sys.io.scheduler "bfq"
 
     # VM
     write /proc/sys/vm/dirty_background_ratio 20
