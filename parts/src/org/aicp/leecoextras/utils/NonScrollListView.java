@@ -1,4 +1,4 @@
-package org.omnirom.device.utils;
+package org.aicp.leecoextras.utils;
 
 import android.content.Context;
 import android.util.AttributeSet;
