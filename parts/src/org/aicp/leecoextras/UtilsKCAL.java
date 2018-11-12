@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.omnirom.device;
+package org.aicp.leecoextras;
 
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningServiceInfo;
