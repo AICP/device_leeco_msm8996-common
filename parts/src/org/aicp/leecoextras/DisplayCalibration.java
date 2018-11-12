@@ -15,7 +15,7 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 *
 */
-package org.omnirom.device;
+package org.aicp.leecoextras;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -32,8 +32,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 
 import android.app.ActionBar;
-import org.omnirom.device.utils.SeekBarPreference;
-import org.omnirom.device.R;
+import org.aicp.leecoextras.utils.SeekBarPreference;
+import org.aicp.leecoextras.R;
 
 public class DisplayCalibration extends PreferenceActivity implements
         OnPreferenceChangeListener {
