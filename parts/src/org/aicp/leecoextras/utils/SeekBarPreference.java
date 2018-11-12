@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package org.omnirom.device.utils;
+package org.aicp.leecoextras.utils;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -35,8 +35,8 @@ import android.widget.TextView;
 import android.os.Handler;
 import android.os.Message;
 
-import org.omnirom.device.R;
-import org.omnirom.device.UtilsKCAL;
+import org.aicp.leecoextras.R;
+import org.aicp.leecoextras.UtilsKCAL;
 
 public class SeekBarPreference extends Preference {
 
