@@ -15,7 +15,6 @@
 -->
 <resources>
     <string name="app_name">Le Extras</string>
-    <string name="advanced_settings">Настройки устройства</string>
     <string name="category_system">Система</string>
     <string name="vib_strength_title_head">Сила вибрации</string>
 
