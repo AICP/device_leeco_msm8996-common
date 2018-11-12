@@ -20,7 +20,7 @@
         android:title="@string/display_title">
         <PreferenceScreen
                  android:key="kcal"
-                 android:fragment="org.omnirom.device.DisplayCalibration"
+                 android:fragment="org.aicp.leecoextras.DisplayCalibration"
                  android:summary="@string/kcal_summary"
                  android:title="@string/kcal_title" />
         <Preference
