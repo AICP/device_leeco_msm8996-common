@@ -31,14 +31,26 @@
          Zone N:        array[N - 1] <= LUX < array[N]
          Zone N + 1     array[N] <= LUX < infinity
          Must be overridden in platform specific overlays -->
-    <integer-array name="config_autoBrightnessLevels">
-        <item>20</item>
-        <item>45</item>
-        <item>1025</item>
-        <item>1480</item>
-        <item>2250</item>
-        <item>3300</item>
+    <integer-array name="config_autoBrightnessLevels">,
+        <item>2</item>
+        <item>4</item>
+        <item>6</item>
+        <item>8</item>
+        <item>10</item>
+        <item>15</item>
+        <item>30</item>
+        <item>100</item>
+        <item>230</item>
+        <item>400</item>
+        <item>500</item>
+        <item>650</item>
+        <item>1000</item>
+        <item>2500</item>
+        <item>5000</item>
+        <item>6250</item>
+        <item>7500</item>
         <item>10000</item>
+        <item>12000</item>
     </integer-array>
 
     <!-- Array of output values for LCD backlight corresponding to the LUX values
@@ -46,14 +58,26 @@
          than the size of the config_autoBrightnessLevels array.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>6</item>
-        <item>10</item>
-        <item>20</item>
-        <item>46</item>
-        <item>78</item>
-        <item>128</item>
-        <item>220</item>
-        <item>255</item>
+        <item>1</item>      <!-- 0-1 -->
+        <item>6</item>      <!-- 2-3 -->
+        <item>8</item>      <!-- 4-5 -->
+        <item>10</item>     <!-- 6-7 -->
+        <item>12</item>     <!-- 8-9 -->
+        <item>14</item>     <!-- 10-14 -->
+        <item>16</item>     <!-- 15-29 -->
+        <item>20</item>     <!-- 30-99 -->
+        <item>25</item>     <!-- 100-229 -->
+        <item>28</item>     <!-- 239-399 -->
+        <item>40</item>     <!-- 400-499 -->
+        <item>53</item>     <!-- 500-649 -->
+        <item>75</item>     <!-- 650-999 -->
+        <item>90</item>     <!-- 1000-2499 -->
+        <item>100</item>    <!-- 2500-4999 -->
+        <item>125</item>    <!-- 5000-6249 -->
+        <item>165</item>    <!-- 6250-7499 -->
+        <item>200</item>    <!-- 7500-9999 -->
+        <item>225</item>    <!-- 10000-11999 -->
+        <item>255</item>    <!-- 12000-19417 (max value of light sensor) -->
     </integer-array>
 
     <!-- Minimum screen brightness setting allowed by the power manager.
