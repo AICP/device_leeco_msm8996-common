@@ -130,7 +130,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
-   ro.vendor.extension_library=libqti-perfd-client.so \
+    ro.am.reschedule_service=true \
+    ro.vendor.extension_library=libqti-perfd-client.so \
+    ro.min_freq_0=307200 \
+    ro.min_freq_4=307200 \
    ro.vendor.qti.sys.fw.bg_apps_limit=60
 
 # RIL
