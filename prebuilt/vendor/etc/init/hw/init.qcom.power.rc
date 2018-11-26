@@ -157,6 +157,11 @@ on property:sys.boot_completed=1
     write /proc/sys/vm/swappiness 5
     write /proc/sys/vm/vfs_cache_pressure 60
 
+    # Starting io prefetcher service
+    start iop
+
+   start energy-awareness
+
 on property:init.svc.recovery=running
     trigger enable-low-power
 
