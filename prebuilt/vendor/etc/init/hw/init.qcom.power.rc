@@ -145,6 +145,13 @@ on enable-low-power
 on property:sys.boot_completed=1
     trigger enable-low-power
 
+    # Start I/O prefetcher service
+    start iop
+
+    start energy-awareness
+
+    start perfd
+
     # update cpusets now that boot is complete and we want better load balancing
     write /dev/cpuset/top-app/cpus 0-3
     write /dev/cpuset/foreground/cpus 0-2
