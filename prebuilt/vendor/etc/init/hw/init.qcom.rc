@@ -293,11 +293,22 @@ on post-fs-data
     mkdir /data/misc/SelfHost/Running/ 2750 system shell
     mkdir /data/misc/SelfHost/socket/ 2770 system system
 
+    #Create PERFD deamon related dirs
+    setprop ro.min_freq_0 384000
+    mkdir /data/misc/perfd 0755 root system
+    chmod 2755 /data/misc/perfd
+    mkdir /data/system/perfd 0770 root system
+    rm /data/system/perfd/default_values
+    chmod 2770 /data/system/perfd
+
     # NFC local data and nfcee xml storage
     mkdir /data/nfc 0770 nfc nfc
     mkdir /data/nfc/param 0770 nfc nfc
     mkdir /data/vendor/nfc 0770 nfc nfc
     mkdir /data/vendor/nfc/param 0770 nfc nfc
+
+    #Create IOP  deamon related dirs
+    mkdir /data/vendor/iop 0770 root system
 
     # Mark the copy complete flag to not completed
     write /data/vendor/radio/copy_complete 0
@@ -588,6 +599,25 @@ service qseecomd /vendor/bin/qseecomd
    class core
    user root
    group root
+   writepid /dev/cpuset/system-background/tasks
+
+    #Create IOP  deamon related dirs
+    mkdir /data/misc/iop 0770 root system
+
+service iop /vendor/bin/iop
+    class main
+    user root
+    group root
+    disabled
+    socket iop seqpacket 0666 root system
+    writepid /dev/cpuset/system-background/tasks
+
+service perfd /vendor/bin/perfd
+   class main
+   user root
+   group root readproc
+   disabled
+   socket perfd seqpacket 0666 root system
    writepid /dev/cpuset/system-background/tasks
 
 service thermal-engine /vendor/bin/thermal-engine -c ${sys.qcom.thermalcfg:-/vendor/etc/thermal-engine.conf}
@@ -904,11 +934,11 @@ service qcom-sh /vendor/bin/init.qcom.sh
     group root system radio
     oneshot
 
-service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /vendor/etc/msm_irqbalance.conf
-    socket msm_irqbalance seqpacket 660 root system
-    class core
+service msm_irqbalance /vendor/bin/msm_irqbalance -f /vendor/etc/msm_irqbalance.conf
+    class main
     user root
     group root
+    disabled
     writepid /dev/cpuset/system-background/tasks
 
 service vendor.hvdcp_opti /vendor/bin/hvdcp_opti
