@@ -34,6 +34,16 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="batt"
+        android:title="@string/battery_settings_title" >
+         <SwitchPreference
+            android:key="persist.sys.le_fast_chrg_enable"
+            android:defaultValue="false"
+            android:title="@string/qc_title"
+            android:summary="@string/qc_summary" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="camera_pref"
         android:title="@string/camera_pref_title" >
 
