@@ -49,6 +49,7 @@ public class DeviceSettings extends PreferenceFragment implements
     private static final String KEY_CATEGORY_DISPLAY = "display";
     private static final String KEY_CATEGORY_CAMERA = "camera_pref";
     private static final String QC_SYSTEM_PROPERTY = "persist.sys.le_fast_chrg_enable";
+    private static final String BATTERY_SYSTEM_PROPERTY = "persist.battery.save";
     private static final String SYSTEM_PROPERTY_CAMERA_FOCUS_FIX = "persist.camera.focus_fix";
     final String KEY_DEVICE_DOZE = "device_doze";
     final String KEY_DEVICE_DOZE_PACKAGE_NAME = "org.lineageos.settings.doze";
@@ -57,6 +58,7 @@ public class DeviceSettings extends PreferenceFragment implements
     private Preference mKcalPref;
     private SwitchPreference mCameraFocusFix;
     private SwitchPreference mEnableQC;
+    private SwitchPreference mBatterySave;
     private PreferenceCategory cameraCategory;
 
     @Override
@@ -77,6 +79,12 @@ public class DeviceSettings extends PreferenceFragment implements
         if( mEnableQC != null ) {
             mEnableQC.setChecked(SystemProperties.getBoolean(QC_SYSTEM_PROPERTY, false));
             mEnableQC.setOnPreferenceChangeListener(this);
+        }
+
+        mBatterySave = (SwitchPreference) findPreference(BATTERY_SYSTEM_PROPERTY);
+        if( mBatterySave != null ) {
+            mBatterySave.setChecked(SystemProperties.getBoolean(BATTERY_SYSTEM_PROPERTY, true));
+            mBatterySave.setOnPreferenceChangeListener(this);
         }
 
         PreferenceCategory cameraCategory = (PreferenceCategory) findPreference(KEY_CATEGORY_CAMERA);

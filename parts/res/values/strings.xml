@@ -26,6 +26,9 @@
     <string name="qc_title">Quick Charge</string>
     <string name="qc_summary">Enable/disable quick charge settings</string>
 
+    <string name="battery_title">Disable all powersave</string>
+    <string name="battery_summary">Change governor from interactive to perfomance</string>
+
     <!-- Camera -->
     <string name="camera_pref_title">Camera</string>
     <string name="camera_focus_fix_title">Autofocus Fix</string>
