@@ -29,7 +29,7 @@
 #include <hardware/vr.h>
 #include <hardware/hardware.h>
 
-#include "thermal_client.h"
+#include <thermal_client.h>
 #include "vr_int.h"
 
 

@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+ifeq ($(call my-dir),$(call project-path-for,qcom-thermal))
+
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
@@ -20,24 +22,22 @@ LOCAL_MODULE := thermal.$(TARGET_BOARD_PLATFORM)
 LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_PROPRIETARY_MODULE := true
 
+LOCAL_SRC_FILES := thermal.c
+LOCAL_SRC_FILES += thermal_common.c
+
 ifeq ($(call is-board-platform-in-list,msm8998), true)
-LOCAL_SRC_FILES := thermal.c
 LOCAL_SRC_FILES += thermal-8998.c
-SUPPORT_THERMAL_HAL:=1
-endif
-
-ifeq ($(call is-board-platform-in-list,sdm845), true)
-LOCAL_SRC_FILES := thermal.c
+else ifeq ($(call is-board-platform-in-list,sdm845), true)
 LOCAL_SRC_FILES += thermal-845.c
-SUPPORT_THERMAL_HAL:=1
+else
+LOCAL_SRC_FILES += thermal_target.c
 endif
 
-ifeq ($(SUPPORT_THERMAL_HAL),)
-LOCAL_SRC_FILES := thermal-default.c
-endif
-
+LOCAL_HEADER_LIBRARIES := libutils_headers libhardware_headers
 LOCAL_SHARED_LIBRARIES := liblog libcutils
 LOCAL_MODULE_TAGS := optional
 LOCAL_CFLAGS := -Wno-unused-parameter
 
 include $(BUILD_SHARED_LIBRARY)
+
+endif
