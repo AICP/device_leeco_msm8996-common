@@ -32,14 +32,6 @@
     <string name="camera_focus_fix_title">Фикс автофокуса</string>
     <string name="camera_focus_fix_summary">Для устройств с проблемой с автофокусом</string>
 
-    <!-- Volte -->
-    <string name="volte_pref_title">VoLTE Хак</string>
-    <string name="volte_fix_title">Включить VoLTE</string>
-    <string name="volte_fix_summary">Требуется перезагрузка, настройки симкарт будут слетать при каждой загрузке</string>
-
-    <string name="s2s_title">Sweep to sleep</string>
-    <string name="s2s_vib_strength_title_head">Sweep2sleep vibration</string>
-
     <!-- Kcal -->
     <string name="kcal_title">Калибровка дисплея</string>
     <string name="kcal_summary">Калибровка цветов дисплея с помощью KCAL</string>
