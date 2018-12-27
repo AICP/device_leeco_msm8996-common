@@ -31,8 +31,5 @@
 
 /sys/devices/soc/75ba000\.i2c/i2c-12/12-0020/input/input2/0dbutton       u:object_r:touchpanel_file:s0
 
-# legacy
-/data/misc/tloc(/.*)?                                                    u:object_r:tlocd_data_file:s0
-
 /sys/remote/enable                     u:object_r:sysfs_ir_enable:s0
 /dev/ttyHSL1                           u:object_r:consumer_ir_device:s0
