@@ -158,7 +158,8 @@ PRODUCT_PACKAGES += \
     libdisplayconfig \
     liboverlay \
     libqdMetaData.system \
-    libtinyxml
+    libtinyxml \
+    libvulkan
 
 # Doze mode
 PRODUCT_PACKAGES += \
@@ -386,7 +387,7 @@ PRODUCT_PACKAGES += \
 
 # VNDK
 PRODUCT_PACKAGES += \
-    vndk-sp
+    vndk_package
 
 # VR
 PRODUCT_PACKAGES += \
