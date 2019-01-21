@@ -40,3 +40,9 @@
 
 /sys/class/leds/torch-light[0-9](/.*)?                                   u:object_r:sysfs_torch:s0
 /sys/devices/soc/soc:qcom,camera-flash/flashled[0-9](/.*)?               u:object_r:sysfs_torch:s0
+
+/sys/devices/platform/kcal_ctrl.0(/.*)?			u:object_r:kcal_dev:s0
+/sys/bus/platform/drivers/kcal_ctrl(/.*)?		u:object_r:kcal_dev:s0
+
+/cache/org\.aicp\.leecoextras\.dex       u:object_r:dalvikcache_data_file:s0
+
