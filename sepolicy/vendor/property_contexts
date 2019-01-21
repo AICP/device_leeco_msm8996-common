@@ -20,3 +20,7 @@ ro.min_freq_4                      u:object_r:freq_prop:s0
 
 # vendor.sys.listeners.registered
 sys.listeners.registered           u:object_r:vendor_tee_listener_prop:s0
+
+# Leeco Extras
+persist.sys.le_fast_chrg_enable    u:object_r:system_prop:s0
+
