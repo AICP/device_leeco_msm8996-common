@@ -34,3 +34,9 @@
 
 /sys/devices/soc/75ba000\.i2c/i2c-12/12-[0-9a-f]+/input/input[0-9]+/0dbutton                   u:object_r:proc_touchpanel:s0
 /sys/devices/soc/75ba000\.i2c/i2c-12/12-[0-9a-f]+/keys_on                                      u:object_r:proc_touchpanel:s0
+
+/sys/devices/platform/kcal_ctrl.0(/.*)?			u:object_r:kcal_dev:s0
+/sys/bus/platform/drivers/kcal_ctrl(/.*)?		u:object_r:kcal_dev:s0
+
+/cache/org\.aicp\.leecoextras\.dex       u:object_r:dalvikcache_data_file:s0
+
