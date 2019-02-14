@@ -1,3 +1,2 @@
 allow vendor_init system_data_file:dir { setattr write };
 
-allow vendor_init proc:lnk_file { setattr };
