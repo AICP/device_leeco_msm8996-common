@@ -3,3 +3,7 @@ allow init devinfo_block_device:blk_file { r_file_perms };
 allow init servicemanager:binder { call };
 
 allow init sysfs_leds:lnk_file { r_file_perms };
+
+allow init socket_device:sock_file { create unlink setattr };
+allow init vendor_file:file { execute execute_no_trans };
+
