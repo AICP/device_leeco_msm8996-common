@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2014-2017 The OmniROM Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <string name="app_name">乐视高级设置</string>
+    <string name="leeco_extras">乐视高级设置</string>
+
+    <!-- Ambient display -->
+    <string name="display_title">显示</string>
+    <string name="device_doze_title">通知亮屏</string>
+
+    <!-- Battery -->
+    <string name="battery_settings_title">电池</string>
+    <string name="qc_title">快速充电</string>
+    <string name="qc_summary">开启/关闭 快速充电功能</string>
+
+    <string name="battery_title">禁用省电优化</string>
+    <string name="battery_summary">将处理器调度修改为性能模式</string>
+
+    <!-- Camera -->
+    <string name="camera_pref_title">相机</string>
+    <string name="camera_focus_fix_title">修复自动对焦</string>
+    <string name="camera_focus_fix_summary">设备无法自动对焦时请启用</string>
+
+    <!-- Kcal -->
+    <string name="kcal_title">色彩</string>
+    <string name="kcal_summary">KCAL色彩校正</string>
+    <string name="kcal_enabled_title">启用KCAL</string>
+    <string name="kcal_enabled_summary">启用KCAL色彩校正</string>
+    <string name="kcal_red">红色调</string>
+    <string name="kcal_green">绿色调</string>
+    <string name="kcal_blue">蓝色调</string>
+    <string name="kcal_saturation">饱和度</string>
+    <string name="kcal_contrast">对比度</string>
+    <string name="menu_reset">重置</string>
+    <string name="kcal_color_temp">色温(K)</string>
+</resources>
