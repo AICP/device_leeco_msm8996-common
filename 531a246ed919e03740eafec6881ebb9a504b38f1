@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2bd9daf_94adddc0",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1375
+      },
+      "writtenOn": "2019-03-14T22:28:41Z",
+      "side": 1,
+      "message": "isn\u0027t this the default and can be removed?",
+      "range": {
+        "startLine": 101,
+        "startChar": 34,
+        "endLine": 101,
+        "endChar": 39
+      },
+      "revId": "531a246ed919e03740eafec6881ebb9a504b38f1",
+      "serverId": "9f904cbb-a964-4fab-a7dc-5cfc4d5c238b",
+      "unresolved": true
+    }
+  ]
+}
