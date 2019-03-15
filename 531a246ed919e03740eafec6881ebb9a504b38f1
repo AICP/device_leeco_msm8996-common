@@ -22,6 +22,30 @@
       "revId": "531a246ed919e03740eafec6881ebb9a504b38f1",
       "serverId": "9f904cbb-a964-4fab-a7dc-5cfc4d5c238b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93ab359f_9d7d0889",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1578
+      },
+      "writtenOn": "2019-03-15T00:02:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c2bd9daf_94adddc0",
+      "range": {
+        "startLine": 101,
+        "startChar": 34,
+        "endLine": 101,
+        "endChar": 39
+      },
+      "revId": "531a246ed919e03740eafec6881ebb9a504b38f1",
+      "serverId": "9f904cbb-a964-4fab-a7dc-5cfc4d5c238b",
+      "unresolved": true
     }
   ]
 }
