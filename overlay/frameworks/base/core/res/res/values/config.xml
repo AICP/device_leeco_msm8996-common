@@ -108,9 +108,6 @@
          in hardware. -->
     <bool name="config_setColorTransformAccelerated">true</bool>
 
-    <!-- Enable Night display, which requires HWC 2.0. -->
-    <bool name="config_nightDisplayAvailable">true</bool>
-
     <!-- Vibrator pattern for feedback about a long screen/key press -->
     <integer-array name="config_longPressVibePattern">
         <item>0</item>
@@ -450,4 +447,26 @@
 
     <!-- Audio panel view placement. Is left side enabled -->
     <bool name="config_audioPanelOnLeftSide">true</bool>
+
+    <!-- Default state for LiveDisplay -->
+    <bool name="config_liveDisplayAvailable">true</bool>
+
+   <!-- Use default display mode -->	
+    <integer name="config_defaultLiveDisplayMode">0</integer>
+
+     <!-- Display mode remapping table.	
+         If the mode names returned by the backend do not match
+         the predefined and translated strings in the Settings
+         app, they can be remapped here. The format is
+         "oldname:newname", one per entry. -->
+    <string-array name="config_displayModeMappings" translatable="false">
+        <item>default:standard</item>
+        <item>xianyan:dynamic</item>
+        <item>ziran:photography</item>
+        <item>rouhe:basic</item>
+        <item>movie:cinema</item>
+    </string-array>
+
+     <!-- Should we filter any display modes which are unampped? -->	
+    <bool name="config_filterDisplayModes">true</bool>
 </resources>
