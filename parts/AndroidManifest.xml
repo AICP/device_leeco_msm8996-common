@@ -39,7 +39,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity-alias>
-        <activity
+<!--        <activity
             android:name="org.aicp.leecoextras.DisplayCalibration"
             android:exported="true"
             android:label="@string/kcal_title"
@@ -48,7 +48,7 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
         </intent-filter>
-        </activity>
+        </activity> -->
         <receiver android:name="org.aicp.leecoextras.Startup" >
             <intent-filter android:priority="100" >
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
