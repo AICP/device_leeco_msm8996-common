@@ -65,8 +65,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.llnoise=1
 
 # CNE
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.cne.feature=1
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    persist.vendor.cne.feature=1
 
 # Data modules
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -82,8 +82,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.display.cabl=2
 
 # DPM
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.dpm.feature=5
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    persist.vendor.dpm.feature=5
 
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
