@@ -47,8 +47,8 @@ vendor/lib/soundfx/libqcbassboost.so|7c5077685b55a57d9e73e919226186111a54ee25
 vendor/lib/soundfx/libqcreverb.so|1214ae277219a471e2f2d9cc5420ee56ff15a139
 vendor/lib/soundfx/libqcvirt.so|f484f70f34edfe8b304e85a842521841f02738ee
 
-# Audio (acdbloader) - from zl1
-vendor/lib/libacdbloader.so|034a5cf03cccfb22e415832c7d6a043dc52d98c0
+# Audio (acdbloader) - from LA.UM.7.5.r1-8x96.0
+vendor/lib/libacdbloader.so|ef0eff0ed0ee84183a19872a7780230b5f0a7d9b
 
 # Bluetooth - from LA.UM.7.5.r1-04800-8x96.0
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti|70d45813c07050fc19969db8a1dcef32432ce62e
