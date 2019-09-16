@@ -132,8 +132,8 @@ PRODUCT_PACKAGES += \
     Snap
 
 # Connectivity Engine support (CNE)
-PRODUCT_PACKAGES += \
-    libcnefeatureconfig
+#PRODUCT_PACKAGES += \
+#    libcnefeatureconfig
 
 # Consumer IR
 PRODUCT_PACKAGES += \
@@ -144,8 +144,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.consumerir.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.consumerir.xml
 
 # Device settings
-PRODUCT_PACKAGES += \
-    DeviceSettings
+#PRODUCT_PACKAGES += \
+#    DeviceSettings
 
 # Display
 PRODUCT_PACKAGES += \
@@ -174,8 +174,8 @@ PRODUCT_PACKAGES += \
     vendor.display.config@1.1_vendor
 
 # Doze mode
-PRODUCT_PACKAGES += \
-    Doze
+#PRODUCT_PACKAGES += \
+#    Doze
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -413,8 +413,8 @@ PRODUCT_PACKAGES += \
     libaacwrapper \
     libnl
 
-PRODUCT_BOOT_JARS += \
-    WfdCommon
+#PRODUCT_BOOT_JARS += \
+#    WfdCommon
 
 # Model is set via init library
 PRODUCT_SYSTEM_PROPERTY_BLACKLIST := \
