@@ -4,12 +4,11 @@
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
-    af.fast_track_multiplier=2 \
-    audio.heap.size.multiplier=10 \
-    audio.offload.min.duration.secs=15 \
+    af.fast_track_multiplier=1 \
+    audio.heap.size.multiplier=7 \
+    audio.offload.min.duration.secs=30 \
     audio.offload.video=true \
     persist.audio.ssr.3mic=false \
-    persist.vendor.audio.aanc.enable=true \
     persist.vendor.audio.fluence.audiorec=false \
     persist.vendor.audio.fluence.speaker=true \
     persist.vendor.audio.fluence.voicecall=true \
@@ -19,25 +18,25 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.vc_call_vol_steps=7 \
     ro.vendor.audio.sdk.fluencetype=fluence \
     ro.vendor.audio.sdk.ssr=false \
-    vendor.audio.dolby.ds2.enabled=true \
-    vendor.audio.dolby.ds2.hardbypass=true \
-    vendor.audio.flac.sw.decoder.24bit=false \
+    vendor.audio.dolby.ds2.enabled=false \
+    vendor.audio.dolby.ds2.hardbypass=false \
+    vendor.audio.flac.sw.decoder.24bit=true \
+    vendor.audio_hal.period_size=192 \
     vendor.audio.hw.aac.encoder=true \
-    ro.audio.offload_wakelock=false \
-    vendor.audio.offload.buffer.size.kb=512 \
+    vendor.audio.offload.buffer.size.kb=64 \
     vendor.audio.offload.gapless.enabled=true \
     vendor.audio.offload.multiaac.enable=true \
     vendor.audio.offload.multiple.enabled=true \
     vendor.audio.offload.passthrough=false \
     vendor.audio.offload.pcm.16bit.enable=true \
     vendor.audio.offload.pcm.24bit.enable=true \
-    vendor.audio.offload.pstimeout.secs=1 \
+    vendor.audio.offload.pstimeout.secs=3 \
     vendor.audio.offload.track.enable=false \
     vendor.audio.parser.ip.buffer.size=262144 \
     vendor.audio.safx.pbe.enabled=true \
     vendor.audio.tunnel.encode=false \
-    vendor.audio.use.sw.alac.decoder=false \
-    vendor.audio.use.sw.ape.decoder=false \
+    vendor.audio.use.sw.alac.decoder=true \
+    vendor.audio.use.sw.ape.decoder=true \
     vendor.voice.path.for.pcm.voip=true
 
 # Audio (AAC 5.1 output)
