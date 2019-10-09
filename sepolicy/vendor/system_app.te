@@ -8,4 +8,3 @@ allow system_app sysfs_batteryinfo:dir search;
 allow system_app sysfs_ir_enable:file { rw_file_perms };
 
 get_prop(system_app, cnd_vendor_prop)
-
