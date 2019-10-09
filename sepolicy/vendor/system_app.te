@@ -4,8 +4,12 @@ allow system_app proc_touchpanel:dir { search };
 allow system_app proc_touchpanel:file { rw_file_perms };
 
 allow system_app sysfs_batteryinfo:dir search;
+<<<<<<< HEAD
 
 allow system_app sysfs_ir_enable:file { rw_file_perms };
 
 get_prop(system_app, cnd_vendor_prop)
 
+=======
+get_prop(system_app, cnd_vendor_prop)
+>>>>>>> aaccc1caa... msm8996-common: Address denials for Q
