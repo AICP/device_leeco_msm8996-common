@@ -34,8 +34,13 @@ source "${HELPER}"
 # Default to sanitizing the vendor folder before extraction
 CLEAN_VENDOR=true
 
+ONLY_COMMON=
+
 while [ "${#}" -gt 0 ]; do
     case "${1}" in
+        -o | --only-common )
+                ONLY_COMMON=false
+                ;;
         -n | --no-cleanup )
                 CLEAN_VENDOR=false
                 ;;
@@ -109,7 +114,7 @@ if [ -s "${MY_DIR}/proprietary-files-twrp.txt" ]; then
 		"${KANG}" --section "${SECTION}"
 fi
 
-if [ -s "${MY_DIR}/../${DEVICE}/proprietary-files.txt" ]; then
+if [ -z "${ONLY_COMMON}" ] && [ -s "${MY_DIR}/../${DEVICE}/proprietary-files.txt" ]; then
     # Reinitialize the helper for device
     source "${MY_DIR}/../${DEVICE}/extract-files.sh"
     setup_vendor "${DEVICE}" "${VENDOR}" "${AICP_ROOT}" false "${CLEAN_VENDOR}"
