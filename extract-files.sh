@@ -75,6 +75,14 @@ function blob_fixup() {
 		sed -i -e 's|/system/bin/linker64|/sbin/linker64\x0\x0\x0\x0\x0\x0|g' "${2}"
 		;;
 
+	vendor/bin/imsrcsd)
+		patchelf --add-needed "libbase_shim.so" "${2}"
+		;;
+
+	vendor/lib64/lib-uceservice.so)
+		patchelf --add-needed "libbase_shim.so" "${2}"
+		;;
+
 	esac
 }
 
