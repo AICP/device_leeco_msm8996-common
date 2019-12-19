@@ -10,6 +10,6 @@
  {
    "repository":  "LineageOS/android_packages_resources_devicesettings",
    "target_path": "packages/resources/devicesettings",
-   "branch":      "lineage-16.0"
+   "branch":      "lineage-17.0"
  }
 ]
