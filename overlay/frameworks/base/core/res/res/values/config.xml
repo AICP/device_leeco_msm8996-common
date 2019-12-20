@@ -433,4 +433,12 @@
     <integer name="config_fingerprintMaxTemplatesPerUser">6</integer>
 
     <bool name="config_button_brightness_support">true</bool>
+
+    <!-- Whether device supports pickupsensor for AD pulse -->
+    <bool name="config_dozePulsePickup">true</bool>
+    <!-- Whether device supports wake screen gesture for AD pulse -->
+    <bool name="config_dozeWakeLockScreenSensorAvailable">true</bool>
+    <!-- Whether device supports sensor based doze customizations -->
+    <bool name="config_dozePulseTilt">true</bool>
+    <bool name="config_dozePulseProximity">true</bool>
 </resources>
