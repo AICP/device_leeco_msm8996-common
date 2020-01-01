@@ -1,1 +1,3 @@
 user=_app seinfo=platform name=com.uei.quicksetsdk.letv domain=quicksetsdk_app type=app_data_file
+# uceShimService
+user=system seinfo=platform name=.dataservices domain=dataservice_app type=radio_data_file
