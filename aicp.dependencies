@@ -6,10 +6,5 @@
  {
    "repository":  "AICP/proprietary_vendor_leeco",
    "target_path": "vendor/leeco"
- },
- {
-   "repository":  "LineageOS/android_packages_resources_devicesettings",
-   "target_path": "packages/resources/devicesettings",
-   "branch":      "lineage-17.0"
  }
 ]
