@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ec06b79_33a76326",
+        "filename": "msm8996.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1375
+      },
+      "writtenOn": "2020-02-12T21:08:47Z",
+      "side": 0,
+      "message": "does this work for you. on M8 (msm8974) it only worked, when setting this to frameworks-res",
+      "revId": "53fac3bf1eefc7a27791df5a0c6a850906b05969",
+      "serverId": "9f904cbb-a964-4fab-a7dc-5cfc4d5c238b",
+      "unresolved": true
+    }
+  ]
+}
