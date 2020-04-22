@@ -22,6 +22,30 @@
       "revId": "1288fcf3e63cc29cfb7d475a7e7ccfc2cdd97325",
       "serverId": "9f904cbb-a964-4fab-a7dc-5cfc4d5c238b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5c2cffe_2c8246ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 774
+      },
+      "writtenOn": "2020-04-22T03:05:40Z",
+      "side": 1,
+      "message": "it\u0027s a mystery, just like the true power of the dark side itself 😄",
+      "parentUuid": "052ee68a_08fffa99",
+      "range": {
+        "startLine": 11,
+        "startChar": 95,
+        "endLine": 11,
+        "endChar": 96
+      },
+      "revId": "1288fcf3e63cc29cfb7d475a7e7ccfc2cdd97325",
+      "serverId": "9f904cbb-a964-4fab-a7dc-5cfc4d5c238b",
+      "unresolved": true
     }
   ]
 }
