@@ -3,3 +3,4 @@ allow vendor_init proc:lnk_file { setattr };
 # Allow vendor_init to relabel unlabeled files and directories
 allow vendor_init unlabeled:{ dir file } { getattr relabelfrom };
 
+allow init adsprpcd_file:file mounton;
