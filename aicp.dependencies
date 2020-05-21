@@ -6,5 +6,20 @@
  {
    "repository":  "AICP/proprietary_vendor_leeco",
    "target_path": "vendor/leeco"
+ },
+  {
+   "repository":  "LineageOS/android_frameworks_opt_telephony",
+   "target_path": "frameworks/opt/telephony"
+   "branch":      "lineage-17.1"
+ },
+  {
+   "repository":  "platform/packages/apps/PhoneCommon",
+   "target_path": "packages/apps/PhoneCommon",
+   "remote":      "aosp"
+ },
+  {
+   "repository":  "platform/frameworks/opt/net/ims",
+   "target_path": "frameworks/opt/net/ims",
+   "remote":      "aosp"
  }
 ]
