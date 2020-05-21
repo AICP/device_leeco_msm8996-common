@@ -16,6 +16,24 @@
       "revId": "b54652c6780228e1704f02807f2958664edc779c",
       "serverId": "9f904cbb-a964-4fab-a7dc-5cfc4d5c238b",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78dd7b91_6d75209e",
+        "filename": "aicp.dependencies",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 774
+      },
+      "writtenOn": "2020-05-21T18:05:49Z",
+      "side": 1,
+      "message": "It should be defined in the remote",
+      "parentUuid": "5789ce0d_c43e4c3c",
+      "revId": "b54652c6780228e1704f02807f2958664edc779c",
+      "serverId": "9f904cbb-a964-4fab-a7dc-5cfc4d5c238b",
+      "unresolved": true
     }
   ]
 }
