@@ -1,0 +1,11 @@
+[
+  {
+    "repository":   "AICP/frameworks_opt_net_ims"
+  },
+  {
+    "repository":   "AICP/frameworks_opt_telephony"
+  },
+  {
+    "repository":   "AICP/packages_apps_PhoneCommon"
+  }
+]
