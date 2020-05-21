@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5789ce0d_c43e4c3c",
+        "filename": "aicp.dependencies",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1375
+      },
+      "writtenOn": "2020-05-21T17:23:52Z",
+      "side": 1,
+      "message": "no branch?",
+      "revId": "b54652c6780228e1704f02807f2958664edc779c",
+      "serverId": "9f904cbb-a964-4fab-a7dc-5cfc4d5c238b",
+      "unresolved": true
+    }
+  ]
+}
