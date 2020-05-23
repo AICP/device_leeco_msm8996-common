@@ -439,6 +439,9 @@ vendor/firmware/a530v2_seq.fw2|63b6d25594a5c1f4217d996a2b636e17a29fc840
 vendor/firmware/a530v3_gpmu.fw2|0a2f6f450231673d75ba39e5d28776db3becf810
 vendor/firmware/a530v3_seq.fw2|8963a53acc689725dee4b22881a4dd4b80e5def8
 
+# IMS - from daisy - daisy_sprout:10/QKQ1.191002.002/V11.0.2.0.QDLMIXM
+-priv-app/ims/ims.apk|9c4ca91e0ec7a567d22251d7ca0640abf13fdd7b
+
 # IMS - Gemini 8.0.0/OPR1.170623.032/8.5.24
 -app/uceShimService/uceShimService.apk
 etc/permissions/com.qualcomm.qti.imscmservice.xml
@@ -455,7 +458,6 @@ lib64/libimscamera_jni.so
 lib64/libimsmedia_jni.so
 lib64/librcc.so
 lib64/vendor.qti.imsrtpservice@1.0.so
--priv-app/ims/ims.apk|426be1b83d6f608107d6dcf587080551abeab3e2
 vendor/bin/ims_rtp_daemon
 vendor/bin/imsdatadaemon
 vendor/bin/imsqmidaemon
@@ -625,7 +627,6 @@ etc/permissions/qcrilhook.xml
 etc/permissions/telephonyservice.xml
 framework/QtiTelephonyServicelibrary.jar
 framework/qcrilhook.jar
-framework/qti-telephony-common.jar|b1953a3599255f08f1785c677d22810f65e0167b
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk|956a4017d0ba7f68e6d225e57b40d3b2bcbb4837
 vendor/bin/ATFWD-daemon
 vendor/bin/netmgrd
@@ -662,6 +663,7 @@ vendor/lib/libmdmdetect.so
 vendor/radio/qcril_database/qcril.db
 
 # RIL - from daisy - daisy_sprout:10/QKQ1.191002.002/V11.0.2.0.QDLMIXM
+product/framework/qti-telephony-common.jar|11d6b89b31a9bf65218b3676c2bbd296275b1932
 vendor/bin/adpl|2fa02f099b90705a2bfc9d1937d6b8b7f55c252a
 vendor/etc/init/dataadpl.rc|cd4907d9bfd438fe5f5c86f5d6cec590ac0bac2a
 vendor/etc/init/dataqti.rc|6abfd1a850d782adbbb6f42c9d8ca870036b2ad1
