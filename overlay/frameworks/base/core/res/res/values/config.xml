@@ -109,7 +109,7 @@
     <integer name="config_autoBrightnessDarkeningLightDebounce">4000</integer>
 
     <!-- Enable adjusting the button backlight -->
-    <bool name="config_deviceHasVariableButtonBrightness">true</bool>
+    <bool name="config_button_brightness_support">true</bool>
 
     <!-- Vibrator pattern for feedback about a long screen/key press -->
     <integer-array name="config_longPressVibePattern">
