@@ -35,17 +35,13 @@ source "${HELPER}"
 CLEAN_VENDOR=true
 
 ONLY_COMMON=
-ONLY_TARGET=
 SECTION=
 KANG=
 
 while [ "${#}" -gt 0 ]; do
     case "${1}" in
-        --only-common )
-                ONLY_COMMON=true
-                ;;
-        --only-target )
-                ONLY_TARGET=true
+        -o | --only-common )
+                ONLY_COMMON=false
                 ;;
         -n | --no-cleanup )
                 CLEAN_VENDOR=false
@@ -151,13 +147,11 @@ function blob_fixup() {
     esac
 }
 
-if [ -z "${ONLY_TARGET}" ]; then
-    # Initialize the helper for common device
-    setup_vendor "${DEVICE_COMMON}" "${VENDOR}" "${AICP_ROOT}" true "${CLEAN_VENDOR}"
+# Initialize the helper for common device
+setup_vendor "${DEVICE_COMMON}" "${VENDOR}" "${AICP_ROOT}" true "${CLEAN_VENDOR}"
 
-    extract "${MY_DIR}/proprietary-files.txt" "${SRC}" \
-            "${KANG}" --section "${SECTION}"
-fi
+extract "${MY_DIR}/proprietary-files.txt" "${SRC}" \
+        "${KANG}" --section "${SECTION}"
 
 if [ -s "${MY_DIR}/proprietary-files-twrp.txt" ]; then
     extract "${MY_DIR}/proprietary-files-twrp.txt" "${SRC}" \
