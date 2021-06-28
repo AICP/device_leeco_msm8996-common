@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b692b2ca_5248495d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 774
+      },
+      "writtenOn": "2021-06-28T02:53:22Z",
+      "side": 1,
+      "message": "goodbye my sweet beautiful lovely vendor dep 😢",
+      "revId": "e9b621187badd0cd654f352b6b4857b3828cecb9",
+      "serverId": "9f904cbb-a964-4fab-a7dc-5cfc4d5c238b"
+    }
+  ]
+}
