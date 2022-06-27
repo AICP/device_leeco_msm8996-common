@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33c75929_c31e92e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416
+      },
+      "writtenOn": "2022-06-27T08:36:49Z",
+      "side": 1,
+      "message": "FYI, AICP has retained support Snap for 12",
+      "revId": "9f9acbfc8118eca7cd809a8e27e9b8a0db510daf",
+      "serverId": "9f904cbb-a964-4fab-a7dc-5cfc4d5c238b"
+    }
+  ]
+}
