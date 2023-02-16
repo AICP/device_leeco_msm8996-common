@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fe4240e_396d40f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1404
+      },
+      "writtenOn": "2023-02-16T05:15:22Z",
+      "side": 1,
+      "message": "helps get us booting again but need to check if any props fail to set via logcat",
+      "revId": "88276c24fe4edc096f245d27626bc10e4d913970",
+      "serverId": "9f904cbb-a964-4fab-a7dc-5cfc4d5c238b"
+    }
+  ]
+}
